@@ -1,0 +1,19 @@
+[{
+    "image": "https://unsplash.it/580/250/?random",
+    "align": "center",
+    "title": "这个测试",
+    "subtitle": "这个测试怎么样？",
+	"link": "/"
+}, {
+    "image": "https://unsplash.it/g/580/250",
+    "align": "left",
+    "title": "这个测试",
+    "subtitle": "这个测试怎么样？",
+	"link": null
+}, {
+    "image": "https://unsplash.it/580/250/?blur",
+    "align": "right",
+    "title": "这个测试",
+    "subtitle": "这个测试怎么样？",
+	"link": null
+}]
