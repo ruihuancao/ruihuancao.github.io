@@ -1,0 +1,105 @@
+# 菜单配置（若不需要某项可直接删除）
+menu:
+  # 首页
+  - id: home
+    link: /
+    icon: home
+    class: menu-home
+  # 归档
+  - id: archives
+    link: /archives
+    icon: archive
+    class: menu-archive
+  # 目录
+  - id: category
+    link: javascript:;
+    category: true
+    icon: bookmark
+    class: menu-category
+  # # 读书
+  # - id: reading
+  #   link: /reading
+  #   icon: book
+  #   class: menu-reading
+  # 关于
+  - id: about
+    link: /about
+    icon: user
+    class: menu-about
+
+# 颜色配置
+
+color:
+    header: indigo
+    footer: indigo
+    page_nav: indigo
+    side_nav: indigo darken-1
+    tag: green accent-4
+    link: indigo
+    pagination: green
+    tab: green
+    archive_item: grey
+    fab: green
+    fab_2: blue
+    fab_3: orange
+    new: pink
+    about_header: indigo
+    about_title: indigo
+
+# color:
+#     header: brown darken-1
+#     footer: brown darken-1
+#     page_nav: brown darken-1
+#     side_nav: brown darken-1
+#     tag: light-green
+#     article_title_link: brown
+#     link: light-green
+#     pagination: light-green
+#     tab: light-green
+#     archive_item: grey
+#     fab: light-green
+#     fab_2: red
+#     fab_3: purple
+#     new: light-green
+#     about_header: brown darken-1
+#     about_title: brown
+
+# color:
+#     header: green
+#     footer: green
+#     page_nav: green
+#     side_nav: green darken-1
+#     tag: red lighten-1
+#     article_title_link: green
+#     link: red
+#     pagination: red
+#     tab: red
+#     archive_item: grey
+#     fab: red
+#     fab_2: cyan
+#     fab_3: light-green
+#     new: red
+#     about_header: green
+#     about_title: green
+
+excerpt_link: Read More
+archive_yearly: true
+
+# 版权信息
+copyright: © 2016 https://ruihuancao.github.io/, All rights reserved.
+
+# Disqus评论shortname，若为空则不启用
+disqus_shortname:
+# 多说shortname，若为空则不启用
+duoshuo_shortname: memento
+
+# Google分析track id，若为空则不启用
+google_analytics: UA-82556114-1
+# 腾讯分析sId，若为空则不启用
+tencent_analytics: 57953639
+
+# 高亮的主题，若为空则使用默认主题
+google_code_prettify: prettify-tomorrow-night-eighties
+
+# 是否启用MathJax数学公式渲染。如果你确认整个站点的博文都不会用到Latex数学公式，可以将其该项设为false提高页面加载速度
+mathjax: true
