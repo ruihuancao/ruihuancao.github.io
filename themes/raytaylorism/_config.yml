@@ -29,40 +29,40 @@ menu:
 
 # 颜色配置
 
-color:
-    header: indigo
-    footer: indigo
-    page_nav: indigo
-    side_nav: indigo darken-1
-    tag: green accent-4
-    link: indigo
-    pagination: green
-    tab: green
-    archive_item: grey
-    fab: green
-    fab_2: blue
-    fab_3: orange
-    new: pink
-    about_header: indigo
-    about_title: indigo
-
 # color:
-#     header: brown darken-1
-#     footer: brown darken-1
-#     page_nav: brown darken-1
-#     side_nav: brown darken-1
-#     tag: light-green
-#     article_title_link: brown
-#     link: light-green
-#     pagination: light-green
-#     tab: light-green
+#     header: indigo
+#     footer: indigo
+#     page_nav: indigo
+#     side_nav: indigo darken-1
+#     tag: green accent-4
+#     link: indigo
+#     pagination: green
+#     tab: green
 #     archive_item: grey
-#     fab: light-green
-#     fab_2: red
-#     fab_3: purple
-#     new: light-green
-#     about_header: brown darken-1
-#     about_title: brown
+#     fab: green
+#     fab_2: blue
+#     fab_3: orange
+#     new: pink
+#     about_header: indigo
+#     about_title: indigo
+
+color:
+    header: brown darken-1
+    footer: brown darken-1
+    page_nav: brown darken-1
+    side_nav: brown darken-1
+    tag: light-green
+    article_title_link: brown
+    link: light-green
+    pagination: light-green
+    tab: light-green
+    archive_item: grey
+    fab: light-green
+    fab_2: red
+    fab_3: purple
+    new: light-green
+    about_header: brown darken-1
+    about_title: brown
 
 # color:
 #     header: green

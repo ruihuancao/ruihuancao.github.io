@@ -4,8 +4,8 @@
 
 # Site
 title: Hope is the thing with feathers
-subtitle: hope is the thing with feathers
-description: hope is the thing with feathers
+subtitle: 散落的蒲公英
+description: 
 author: caoruihuan
 language: zh-CN
 timezone:
@@ -64,6 +64,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: raytaylorism
+#theme: maupassant
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

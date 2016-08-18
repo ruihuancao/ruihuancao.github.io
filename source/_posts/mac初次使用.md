@@ -1,5 +1,5 @@
 ---
-title: mac初次使用.md
+title: mac初次使用
 date: 2016-08-17 00:31:46
 categories:
 - 开发

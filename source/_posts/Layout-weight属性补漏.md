@@ -1,5 +1,5 @@
 ---
-title: Layout_weight属性补漏.md
+title: Layout_weight属性补漏
 date: 2016-08-18 09:50:24
 categories:
 - 开发
@@ -10,7 +10,7 @@ tags:
 
 某天和别人说起这个属性，发现自己居然忽略了，回来试了下，果然以前认识有误
 
-## layout_weight
+## layout_weight例子1
 
 ```
 <LinearLayout
@@ -33,6 +33,7 @@ tags:
 ```
 以上： Button1 占2/3  Button2 占1/3
 
+## layout_weight例子2
 ```
 <LinearLayout
     android:orientation="horizontal"
@@ -58,6 +59,7 @@ tags:
 当android:layout_width="match_parent"，此时weight所在view，尽可能最大
 当android:layout_width="wrap_content"，此时weight所在view，尽可能最小
 
+## layout_weight例子3
 ```
 <LinearLayout
     android:orientation="horizontal"
@@ -80,6 +82,7 @@ tags:
 Button1占满父布局
 对比1: Button2 weight为2000，意味着Button1很大，最大也是占满父布局。
 
+## layout_weight例子4
 ```
 <LinearLayout
     android:orientation="horizontal"
