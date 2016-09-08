@@ -1,12 +1,8 @@
 ---
 title: git使用
 date: 2016-08-16 11:40:03
-categories:
-- 开发
-- 工具
-tags:
-- 开发
-- git
+categories: 开发
+tags: Test
 ---
 
 git 常用命令记录

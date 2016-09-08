@@ -3,12 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hope is the thing with feathers
-subtitle: 散落的蒲公英
-description: 
-author: caoruihuan
-language: zh-CN
+title: 记录生活
+subtitle:
+description: 万物之中，希望至美；至美之物，永不凋零
+author: 曹瑞环
+language: zh-Hans
 timezone:
+avatar: /images/avatar.png
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -39,7 +41,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace:
 
@@ -63,8 +65,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: raytaylorism
-#theme: maupassant
+#theme: raytaylorism
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
