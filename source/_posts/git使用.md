@@ -10,6 +10,8 @@ git 常用命令记录
 ## 下载安装
   参考官网[git地址](https://git-scm.com/downloads/)
 
+<!--more-->
+
 ## 配置
 
 ```

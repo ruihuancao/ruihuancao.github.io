@@ -10,6 +10,8 @@ tags:
 
 之前一直使用ubuntu开发，突然换到Mac有点不适应，特此记录下，熟悉下环境
 
+<!--more-->
+
 ## Git
  版本控制工具
  安装配置，[参考](https://ruihuancao.github.io/2016/08/16/git使用/)
