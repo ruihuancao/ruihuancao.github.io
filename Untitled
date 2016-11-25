@@ -1,0 +1,8 @@
+<div class="article block untagged mb15".*?<div class="author.*?<a.*?</a>
+<a.*?<h2>(.*?)</h2>.*?<div class="content">.*?
+<span>(.*?)<span>.*?</div>.*?
+
+# 取整体
+//*[@class="article block untagged mb15"]
+
+//*[@class="article block untagged mb15"]/a/div/span
