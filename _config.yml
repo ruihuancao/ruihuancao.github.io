@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 记录生活
-subtitle:
-description: 万物之中，希望至美；至美之物，永不凋零
+title: 散落的蒲公英
+subtitle: 万物之中，希望至美；至美之物，永不凋零
+description: 我们就这样一起到老吧
 author: 曹瑞环
-language: zh-Hans
+language: zh-CN
 timezone:
 avatar: /images/avatar.png
 
@@ -39,10 +39,12 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+favicon: favicon.ico
+
 highlight:
   enable: true
-  line_number: false
-  auto_detect: false
+  line_number: true
+  auto_detect: true
   tab_replace:
 
 # Category & Tag
@@ -66,7 +68,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #theme: raytaylorism
-theme: next
+theme: maupassant
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

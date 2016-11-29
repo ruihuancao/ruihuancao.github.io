@@ -1,6 +1,6 @@
 ---
 title: Android启动模式
-date: 2016-08-18 10:42:14
+date: 2015-08-18 10:42:14
 categories:
 - 开发
 - Android
