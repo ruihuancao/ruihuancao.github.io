@@ -1,5 +1,5 @@
 ---
-title: git记录
+title: git使用记录总结
 date: 2015-08-16 11:40:03
 categories: 开发
 tags: Test

@@ -1,5 +1,5 @@
 ---
-title: Layout_weight属性补漏
+title: Layout_weight属性
 date: 2014-08-18 09:50:24
 categories:
 - 开发
@@ -8,8 +8,7 @@ tags:
 - Android
 ---
 
-某天和别人说起这个属性，发现自己居然忽略了，回来试了下，果然以前认识有误
-
+这个本来应该删了，因为没什么用，当时不理解这个是因为没有看View绘制流出的源码，留着看看以前有多傻。。。
 <!--more-->
 
 ## layout_weight例子1

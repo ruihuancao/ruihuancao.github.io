@@ -8,8 +8,7 @@ tags:
 - Android
 ---
 
-搞清楚Android 中View事件，便与更好实现自定义View和解决View滑动冲突
-
+开发中事件冲突处理，需要更好的理解清除View事件机制。还是看源码，View和View Group中几个方法就可以
 <!--more-->
 
 ## View

@@ -1,22 +1,15 @@
 ---
 title: Android源码编译
-date: 2016-08-18 12:08:59
+date: 2016-09-10 20:08:59
 categories:
 - 开发
 - Android
 tags:
 - Android
 ---
+重新编译源码，刷最新的7.0到nexus5x中。本来之前有刷过了，不小心又把源码删了，重新下载，重新编译，正好也记录下
 
-------
-
-之前编译过源码，刷了几台机器，还错机器导致数据被清除了，只好重新下载了，正好重新记录下。
-
-主要有以下几个目的
-
-> * 编译源码，制作rom刷机
-> * 引入Android studio 查看源码
-> * 学习源码
+<!--more-->
 
 # 编译源码，制作rom刷机
 
@@ -79,7 +72,7 @@ curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 ```
 ### 2.初始化
-有两中中方式可以初始化
+有两种方式可以初始化
 
 #### 使用初始化包初始化
 ```
@@ -138,4 +131,7 @@ make -j4
 emulator
 ```
 ### 6. 刷入真机中
-刷如
+```
+adb reboot bootloader
+fastboot flashall -w
+```

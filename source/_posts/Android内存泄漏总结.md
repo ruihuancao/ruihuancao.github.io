@@ -8,6 +8,7 @@ tags:
 - Android
 ---
 开发过程中如何避免内存泄露，以及内存泄露查看方法总结。内存泄露简单说就是，该被释放的对象没有被释放，存在引用无法被GC回收.
+<!--more-->
 
 ## Java内存分配策略
 java内存分配策略有3种：静态分配,栈式分配,和堆式分配，对应内存存储空间，静态存储区（方法区）、栈区和堆区。
@@ -30,7 +31,9 @@ Java使用有向图的方式进行内存管理。如果某个对象与这个根�
 - 集合类泄漏
 经常在做缓存的时候常使用map的全局变量，如果只添加对象，没有相应的删除机制，添加进去的对象则一致无法被回收，内存泄露。
 - 单例造成的内存泄漏
-在做数据层时，常建立单例引用
+在做数据层时，常建立单例引用。单例在整个程序运行期间一致存在，建立时需要传入一个Context,
+如果传入一个ApplicationContext,它在程序运行期间一致存在，没有问题。
+如果传入Activity Context，及时Activity生命周期结束，由于存在单例引用，导致GC无法回收，内存泄露。
 ```
 public class DataManager {
     private volatile static DataManager instance;
@@ -50,11 +53,9 @@ public class DataManager {
     }
 }
 ```
-单例在整个程序运行期间一致存在，建立时需要传入一个Context,
-如果传入一个ApplicationContext,它在程序运行期间一致存在，没有问题。
-如果传入Activity Context，及时Activity生命周期结束，由于存在单例引用，导致GC无法回收，内存泄露。
 
 - 非静态内部类
+非静态内部类默认持有外部类引用，静态变量在整个应用期间可用，这就导致一直持有Activity，Activity无法被回收。
 ```
 public class MainActivity extends AppCompatActivity{
     private static Test mTest = null;
@@ -69,9 +70,9 @@ public class MainActivity extends AppCompatActivity{
     }
 }
 ```
-非静态内部类默认持有外部类引用，静态变量在整个应用期间可用，这就导致一直持有Activity，Activity无法被回收。
 
 - 匿名内部类
+如果runnable线程与Activity生命周期不一致，则内存泄漏，runnable默认持有Activity引用，Activity结束，线程未结束，无法回收。
 ```
 public class MainActivity extends AppCompatActivity{
     Runnable runnable = new Runnable() {
@@ -82,8 +83,11 @@ public class MainActivity extends AppCompatActivity{
     };
 }
 ```
-如果runnable线程与Activity生命周期不一致，则内存泄漏，runnable默认持有Activity引用，Activity结束，线程未结束，无法回收。
+
 - Handler造成的内存泄漏
+这个很常见，解决办法，静态内部类 + WeakReference
+Java对引用的分类有 Strong reference, SoftReference, WeakReference, PhatomReference 四种
+除了强引用，后3中都可以被GC回收
 ```
 public class MainActivity extends AppCompatActivity{
 
@@ -108,9 +112,6 @@ public class MainActivity extends AppCompatActivity{
     }
 }
 ```
-这个很常见，解决办法，静态内部类 + WeakReference
-Java对引用的分类有 Strong reference, SoftReference, WeakReference, PhatomReference 四种
-除了强引用，后3中都可以被GC回收
 - 资源未关闭或未取消注册的内存泄露
 io操作，BraodcastReceiver，数据库操游标等
 
