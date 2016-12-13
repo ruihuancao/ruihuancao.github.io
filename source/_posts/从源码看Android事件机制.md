@@ -1,5 +1,5 @@
 ---
-title: Android事件
+title: 从源码看Android事件机制
 date: 2015-10-18 12:08:59
 categories:
 - 开发
@@ -11,25 +11,17 @@ tags:
 开发中事件冲突处理，需要更好的理解清除View事件机制。还是看源码，View和View Group中几个方法就可以
 <!--more-->
 
-## View
-ViewGroup 一般为布局 可以addView 本身也是View的子类
-onInterceptTouchEvent() 为ViewGroup中方法
-
+## 事件机制
+事件机制指的就是View的事件分发机制。主要涉及的方法：
+dispatchTouchEvent()： 负责事件的分发。
+onInterceptTouchEvent(): ViewGroup的事件拦截，
+onTouchEvent(): 事件处理消费
 ##View事件分发
-
+事件传递顺序：
+Activity -> Window -> View
 ### Activity到RootView传递
-Activity(持有Window引用，Window唯一实现PhoneWindow)调用 ondispatchTouchEvent()
+事件处理从ActivitydispatchTouchEvent开始，Activity(持有Window引用，Window唯一实现PhoneWindow)调用 ondispatchTouchEvent()
 ```
-/**
- * Called to process touch screen events.  You can override this to
- * intercept all touch screen events before they are dispatched to the
- * window.  Be sure to call this implementation for touch screen events
- * that should be handled normally.
- *
- * @param ev The touch screen event.
- *
- * @return boolean Return true if this event was consumed.
- */
 public boolean dispatchTouchEvent(MotionEvent ev) {
   　// Activity类中
     if (ev.getAction() == MotionEvent.ACTION_DOWN) {
@@ -79,12 +71,7 @@ ViewGroup(DecorView继承自FrameLayout，FrameLayout继承自ViewGroup,故会�
     return false;
   }
 
-  /**
-   * 最终从dispatchTouchEvent调用过来的分发方法
-   * Transforms a motion event into the coordinate space of a particular child view,
-   * filters out irrelevant pointer ids, and overrides its action if necessary.
-   * If child is null, assumes the MotionEvent will be sent to this ViewGroup instead.
-   */
+  // 最终从dispatchTouchEvent调用过来的分发方法
   private boolean dispatchTransformedTouchEvent(MotionEvent event, boolean cancel,
           View child, int desiredPointerIdBits) {
       final boolean handled;
