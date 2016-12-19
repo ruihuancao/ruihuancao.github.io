@@ -12,6 +12,10 @@ Android 自定义View大概是开发中必不可少的，自定义View并不是�
 
 <!--more-->
 
+
+## 自定义view不同机型适配
+
+
 ## View工作流程
 View主要流程：measure layout draw
 
