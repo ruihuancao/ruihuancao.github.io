@@ -13,7 +13,7 @@ tags:
 <!--more-->
 
 ## Apktool
-(apktool)[https://ibotpeaches.github.io/Apktool/]用来反编译资源文件
+[apktool](https://ibotpeaches.github.io/Apktool/)用来反编译资源文件
 ### 下载配置
 ```
 mkdir apktool
@@ -42,7 +42,7 @@ apktool b bar -o new_bar.apk
 ```
 
 ## Enjarify
-(Enjarify)[https://github.com/google/enjarify]反编译dex文件。dex2jar的替代者
+[Enjarify](https://github.com/google/enjarify)反编译dex文件。dex2jar的替代者
 enjarify 是python3的程序，注意切换python环境到python3
 ```
 git clone git@github.com:google/enjarify.git
@@ -52,15 +52,15 @@ enjarify test.apk
 ```
 这里已经将apk中的dex文件转换成jar包,然后就是查看了
 ## JD-GUI
-(jd-gui)[http://jd.benow.ca/]查看jar内容的工具,可以下载jar包，双击运行，然后打开enjarify生产的jar包查看代码
+[jd-gui](http://jd.benow.ca/)查看jar内容的工具,可以下载jar包，双击运行，然后打开enjarify生产的jar包查看代码
 或者下载对应系统的版本运行查看
 
 ## 完整流程
-- 1. apktool反编译修改资源文件
-- 2. enjarify或者dex2jar反编译dex，查看java代码,在上面文件中修改对应smail
-- 3. apktool 重新生成apk
-- 4. 签名
-
+反编译打包流程
+- apktool反编译修改资源文件
+- enjarify或者dex2jar反编译dex，查看java代码,在上面文件中修改对应smail
+- apktool 重新生成apk
+- 签名
 ### 签名
 ```
 # 生成签名文件（jdk自带）
@@ -70,14 +70,9 @@ jarsigner -verbose -keystore test.keystore -signedjar -signed.apk unsigned.apk '
 ```
 
 ## ClassyShark
-(ClassyShark)[https://github.com/google/android-classyshark]自动反编译，一键查看
+[ClassyShark](https://github.com/google/android-classyshark)自动反编译，一键查看
 ## APK Analyzer
 Android Studio2.2 版本加入新功能,一键查看反编译文件
-
-
-
-
-
 
 
 ## apk 文件结构
@@ -88,17 +83,6 @@ Android Studio2.2 版本加入新功能,一键查看反编译文件
  classes.dex java 编译产生的字节码文件
  resources.arsc 资源索引
  其他文件 assets lib 等
-
-## 工具配置
-  apktool http://ibotpeaches.github.io/Apktool/
-  jadx https://github.com/skylot/jadx
-
-  jadx
-  git clone https://github.com/skylot/jadx.git
-  cd jadx
-  ./gradlew dist
-
-  添加到环境变量
 
 ## 打包流程
 APK是Android Package的缩写，实际上APK就是一个zip压缩包，使用zip解压软件直接就能对其进行解压，解压后会发现就是由各种资源文件、一或多个dex文件（odex过的apk除外）、AndroidManifest.xml、resources.arsc以及其他一些文件组成的。
