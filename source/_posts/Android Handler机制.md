@@ -1,5 +1,5 @@
 ---
-title: 从源码看Handler机制
+title: Android Handler机制
 date: 2016-6-17 00:31:46
 categories:
 - 开发

@@ -1,5 +1,5 @@
 ---
-title: 自定义View-测量
+title: Android View绘制
 date: 2015-10-18 12:08:59
 categories:
 - 开发

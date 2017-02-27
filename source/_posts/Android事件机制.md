@@ -1,5 +1,5 @@
 ---
-title: 从源码看Android事件机制
+title: Android事件机制
 date: 2015-10-18 12:08:59
 categories:
 - 开发

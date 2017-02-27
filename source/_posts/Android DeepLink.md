@@ -1,5 +1,5 @@
 ---
-title: DeepLink
+title: Android DeepLink
 date: 2015-05-20 20:20:20
 categories:
 - 开发
