@@ -1,6 +1,6 @@
 ---
 title: Flask学习记录
-date: 2014-10-3 20:10:20
+date: 2016-10-3 20:10:20
 categories:
 - 开发
 - Flask
@@ -35,8 +35,47 @@ source ./python3.5/bin/activate
 deactivate
 # 安装依赖
 pip install -r requirement.txt
+
+#生成requirements.txt文件
+pip freeze >requirements.txt
 ```
 ### Flask
 ```
 sudo pip install Flask
+```
+## Flask扩展
+Flask 有很多可用扩展
+### flask_script
+命令管理
+```
+pip install flask_script
+```
+### flask_bootstrap
+bootstrap扩展
+```
+pip install flask_bootstrap
+```
+### flask_moment
+时间格式化
+```
+pip install flask_moment
+```
+### flask_wtf
+flask 表单扩展
+```
+pip install flask_wtf
+```
+### flask_sqlalchemy
+数据库管理
+```
+pip install flask_sqlalchemy
+```
+### flask_migrate
+数据库升级
+```
+pip install flask_migrate
+```
+### Flask-Login
+```
+pip install Flask-Login
 ```

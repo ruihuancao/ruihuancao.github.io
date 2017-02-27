@@ -1,6 +1,6 @@
 ---
 title: (转)Markdown基础教程
-date: 2014-08-19 14:28:59
+date: 2015-08-19 14:28:59
 categories:
 - 开发
 - Markdown

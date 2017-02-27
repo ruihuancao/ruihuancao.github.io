@@ -1,5 +1,5 @@
 ---
-title: 数据加密RSA
+title: 数据加密MD5
 date: 2016-3-17 00:31:46
 categories:
 - 开发
@@ -13,7 +13,7 @@ MD5
 ## 什么是MD5
 MD5消息摘要算法（MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。
 
-
+<!--more-->
 ## MD5使用
 ```
 public class MD5 {

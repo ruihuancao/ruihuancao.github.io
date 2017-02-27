@@ -1,6 +1,6 @@
 ---
 title: (转)Python3教程
-date: 2015-01-18 12:08:59
+date: 2015-11-18 12:08:59
 categories:
 - 开发
 - Python

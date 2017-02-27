@@ -1,6 +1,6 @@
 ---
 title: (转)Python2教程
-date: 2015-01-18 13:18:59
+date: 2015-11-18 13:18:59
 categories:
 - 开发
 - Python

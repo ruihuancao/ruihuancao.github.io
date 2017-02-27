@@ -1,5 +1,5 @@
 ---
-title: 数据加密RSA
+title: 数据加密AES
 date: 2016-3-17 00:31:46
 categories:
 - 开发
@@ -10,7 +10,7 @@ tags:
 
 ## 什么是AES
 高级加密标准（Advanced Encryption Standard，缩写：AES），在密码学中又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。
-
+<!--more-->
 ## AES使用
 ```
 public class AES {
