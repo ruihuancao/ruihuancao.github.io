@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Android Crash分析"/>
+
+
+
+
+  <meta name="keywords" content="Android, 散落的蒲公英" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="散落的蒲公英">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
+
+
+
+<link rel="canonical" href="https://ruihuancao.github.io/2017/01/18/Android Crash分析/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"散落的蒲公英","subtitle":"万物之中，希望至美；至美之物，永不凋零","description":"我们就这样一起到老吧","author":"曹瑞环","language":"zh-CN","timezone":null,"url":"https://ruihuancao.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":true,"line_number":false,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":15,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:ruihuancao/ruihuancao.github.io.git","branch":"master"},"ignore":[],"avatar":"/images/avatar.png","favicon":"/favicon.ico","archive_generator":{"per_page":20,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":20},"tag_generator":{"per_page":20},"index_generator":{"per_page":20,"order_by":"-date"},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"rss":"default","menu":{"Home":"/","Archives":"/archives/","Categories":"/categories/","Tags":"/tags"},"color":"default","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"ruihuancao@email.com","github":"https://github.com/ruihuancao"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
+
+    <title> Android Crash分析 - 散落的蒲公英 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">散落的蒲公英</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">散落的蒲公英</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android Crash分析
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-01-18
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/开发/">开发</a>
+            
+              <a href="/categories/开发/Android/">Android</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#未捕获的异常"><span class="toc-text">未捕获的异常</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ANR（Application-Not-Responding）"><span class="toc-text">ANR（Application Not Responding）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ANR类型"><span class="toc-text">ANR类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ANR产生的原因"><span class="toc-text">ANR产生的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ANR定位"><span class="toc-text">ANR定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#避免ANR"><span class="toc-text">避免ANR</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#闪退（NDK-程序引发错误）"><span class="toc-text">闪退（NDK 程序引发错误）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tombstone"><span class="toc-text">Tombstone</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-信号机制"><span class="toc-text">Linux 信号机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么-Tombstone？"><span class="toc-text">什么 Tombstone？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析Tombstone文件"><span class="toc-text">解析Tombstone文件</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>Android开发中，程序Crash分三种情况：</p>
+<ul>
+<li>未捕获的异常</li>
+<li>ANR（Application Not Responding）</li>
+<li>闪退（NDK 程序引发错误）</li>
+</ul>
+<a id="more"></a>
+<h1 id="未捕获的异常"><a href="#未捕获的异常" class="headerlink" title="未捕获的异常"></a>未捕获的异常</h1><p>其中未捕获的异常根据 logcat 打印的堆栈信息很容易定位错误。</p>
+<h1 id="ANR（Application-Not-Responding）"><a href="#ANR（Application-Not-Responding）" class="headerlink" title="ANR（Application Not Responding）"></a>ANR（Application Not Responding）</h1><p>ANR(Application Not responding)，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR,并会在/data/anr目录下生成一个traces.txt文件，记录系统产生anr异常的堆栈和线程信息。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
+<h2 id="ANR类型"><a href="#ANR类型" class="headerlink" title="ANR类型"></a>ANR类型</h2><ul>
+<li>KeyDispatchTimeout(5 seconds) –主要类型按键或触摸事件在特定时间内无响应</li>
+<li>BroadcastTimeout(10 seconds) –BroadcastReceiver在特定时间内无法处理完成</li>
+<li>ServiceTimeout(20 seconds) –小概率类型 Service在特定的时间内无法处理完成</li>
+</ul>
+<h2 id="ANR产生的原因"><a href="#ANR产生的原因" class="headerlink" title="ANR产生的原因"></a>ANR产生的原因</h2><p>应用程序自身引起的。如主线程阻塞（block）、挂起、死锁、死循环、IO长时间读写，执行耗时操作等</p>
+<p>其他应用进程引起的。其他进程的CPU占用率过高、某一时刻系统CPU负载过高等，都会导致当前进程无法抢到CPU时间片。</p>
+<h2 id="ANR定位"><a href="#ANR定位" class="headerlink" title="ANR定位"></a>ANR定位</h2><p>系统发生ANR的时候，一般会以以下三种方式记录</p>
+<ul>
+<li>logcat</li>
+<li>/data/anr/traces.txt</li>
+<li>dropBox</li>
+</ul>
+<p>主要查看anr类型，cpu使用情况，发生位置，具体分析需要跟进具体业务情况</p>
+<h2 id="避免ANR"><a href="#避免ANR" class="headerlink" title="避免ANR"></a>避免ANR</h2><ol>
+<li>编写代码时注意</li>
+<li>StrictMode</li>
+<li>monkey</li>
+</ol>
+<h1 id="闪退（NDK-程序引发错误）"><a href="#闪退（NDK-程序引发错误）" class="headerlink" title="闪退（NDK 程序引发错误）"></a>闪退（NDK 程序引发错误）</h1><h1 id="Tombstone"><a href="#Tombstone" class="headerlink" title="Tombstone"></a>Tombstone</h1><h2 id="Linux-信号机制"><a href="#Linux-信号机制" class="headerlink" title="Linux 信号机制"></a>Linux 信号机制</h2><p>信号机制是 Linux 进程间通信的一种重要方式，Linux 信号一方面用于正常的进程间通信和同步.另一方面，它还负责监控系统异常及中断。 当应用程序运行异常时， Linux 内核将产生错误信号并通知当前进程。当 Linux 应用程序在执行时发生严重错误，一般会导致程序 crash。其中，Linux 专门提供了一类 crash 信号，在程序接收到此类信号时，缺省操作是将 crash 的现场信息记录到 core 文件，然后终止进程。</p>
+<h2 id="什么-Tombstone？"><a href="#什么-Tombstone？" class="headerlink" title="什么 Tombstone？"></a>什么 Tombstone？</h2><p>Android Native 程序本质上就是一个 Linux 程序，因此当它在执行时发生严重错误，也会导致程序 crash，然后产生一个记录 crash 的现场信息的文件，而这个文件在 Android 系统中就是 tombstone 文件。</p>
+<p>tombstone 文件位于路径 /data/tombstones/ 下，<br>tombstone 文件它主要由下面几部分组成：</p>
+<ul>
+<li>Build fingerprint</li>
+<li>Crashed process and PIDs</li>
+<li>Terminated signal and fault address</li>
+<li>CPU registers</li>
+<li>Call stack</li>
+<li>Stack content of each call</li>
+</ul>
+<h2 id="解析Tombstone文件"><a href="#解析Tombstone文件" class="headerlink" title="解析Tombstone文件"></a>解析Tombstone文件</h2><ul>
+<li>addr2line</li>
+<li>ndk-stack</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Android/">Android</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/01/18/Android Builder机制/">
+        <span class="next-text nav-default">Android Builder机制</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+
+  </body>
+</html>

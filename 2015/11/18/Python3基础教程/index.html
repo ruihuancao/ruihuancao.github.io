@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="(转)Python3教程"/>
+
+
+
+
+  <meta name="keywords" content="Python, 散落的蒲公英" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="散落的蒲公英">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
+
+
+
+<link rel="canonical" href="https://ruihuancao.github.io/2015/11/18/Python3基础教程/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"散落的蒲公英","subtitle":"万物之中，希望至美；至美之物，永不凋零","description":"我们就这样一起到老吧","author":"曹瑞环","language":"zh-CN","timezone":null,"url":"https://ruihuancao.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":true,"line_number":false,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":15,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:ruihuancao/ruihuancao.github.io.git","branch":"master"},"ignore":[],"avatar":"/images/avatar.png","favicon":"/favicon.ico","archive_generator":{"per_page":20,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":20},"tag_generator":{"per_page":20},"index_generator":{"per_page":20,"order_by":"-date"},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"rss":"default","menu":{"Home":"/","Archives":"/archives/","Categories":"/categories/","Tags":"/tags"},"color":"default","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"ruihuancao@email.com","github":"https://github.com/ruihuancao"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
+
+    <title> (转)Python3教程 - 散落的蒲公英 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">散落的蒲公英</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">散落的蒲公英</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          (转)Python3教程
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2015-11-18
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/开发/">开发</a>
+            
+              <a href="/categories/开发/Python/">Python</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p><a href="https://learnxinyminutes.com/docs/zh-cn/python3-cn/" target="_blank" rel="noopener">原文地址</a><br>Python 3 基础教程</p>
+<a id="more"></a>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>Pyhton3教程<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 用井字符开头的是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="string">""" 多行字符串用三个引号</span></span><br><span class="line"><span class="string">    包裹，也常被用来做多</span></span><br><span class="line"><span class="string">    行注释</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"><span class="comment">## 1. 原始数据类型和运算符</span></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 整数</span></span><br><span class="line"><span class="number">3</span>  <span class="comment"># =&gt; 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 算术没有什么出乎意料的</span></span><br><span class="line"><span class="number">1</span> + <span class="number">1</span>  <span class="comment"># =&gt; 2</span></span><br><span class="line"><span class="number">8</span> - <span class="number">1</span>  <span class="comment"># =&gt; 7</span></span><br><span class="line"><span class="number">10</span> * <span class="number">2</span>  <span class="comment"># =&gt; 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 但是除法例外，会自动转换成浮点数</span></span><br><span class="line"><span class="number">35</span> / <span class="number">5</span>  <span class="comment"># =&gt; 7.0</span></span><br><span class="line"><span class="number">5</span> / <span class="number">3</span>  <span class="comment"># =&gt; 1.6666666666666667</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 整数除法的结果都是向下取整</span></span><br><span class="line"><span class="number">5</span> // <span class="number">3</span>     <span class="comment"># =&gt; 1</span></span><br><span class="line"><span class="number">5.0</span> // <span class="number">3.0</span> <span class="comment"># =&gt; 1.0 # 浮点数也可以</span></span><br><span class="line"><span class="number">-5</span> // <span class="number">3</span>  <span class="comment"># =&gt; -2</span></span><br><span class="line"><span class="number">-5.0</span> // <span class="number">3.0</span> <span class="comment"># =&gt; -2.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 浮点数的运算结果也是浮点数</span></span><br><span class="line"><span class="number">3</span> * <span class="number">2.0</span> <span class="comment"># =&gt; 6.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 模除</span></span><br><span class="line"><span class="number">7</span> % <span class="number">3</span> <span class="comment"># =&gt; 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># x的y次方</span></span><br><span class="line"><span class="number">2</span>**<span class="number">4</span> <span class="comment"># =&gt; 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用括号决定优先级</span></span><br><span class="line">(<span class="number">1</span> + <span class="number">3</span>) * <span class="number">2</span>  <span class="comment"># =&gt; 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 布尔值</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用not取非</span></span><br><span class="line"><span class="keyword">not</span> <span class="keyword">True</span>  <span class="comment"># =&gt; False</span></span><br><span class="line"><span class="keyword">not</span> <span class="keyword">False</span>  <span class="comment"># =&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 逻辑运算符，注意and和or都是小写</span></span><br><span class="line"><span class="keyword">True</span> <span class="keyword">and</span> <span class="keyword">False</span> <span class="comment">#=&gt; False</span></span><br><span class="line"><span class="keyword">False</span> <span class="keyword">or</span> <span class="keyword">True</span> <span class="comment">#=&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 整数也可以当作布尔值</span></span><br><span class="line"><span class="number">0</span> <span class="keyword">and</span> <span class="number">2</span> <span class="comment">#=&gt; 0</span></span><br><span class="line"><span class="number">-5</span> <span class="keyword">or</span> <span class="number">0</span> <span class="comment">#=&gt; -5</span></span><br><span class="line"><span class="number">0</span> == <span class="keyword">False</span> <span class="comment">#=&gt; True</span></span><br><span class="line"><span class="number">2</span> == <span class="keyword">True</span> <span class="comment">#=&gt; False</span></span><br><span class="line"><span class="number">1</span> == <span class="keyword">True</span> <span class="comment">#=&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用==判断相等</span></span><br><span class="line"><span class="number">1</span> == <span class="number">1</span>  <span class="comment"># =&gt; True</span></span><br><span class="line"><span class="number">2</span> == <span class="number">1</span>  <span class="comment"># =&gt; False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用!=判断不等</span></span><br><span class="line"><span class="number">1</span> != <span class="number">1</span>  <span class="comment"># =&gt; False</span></span><br><span class="line"><span class="number">2</span> != <span class="number">1</span>  <span class="comment"># =&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 比较大小</span></span><br><span class="line"><span class="number">1</span> &lt; <span class="number">10</span>  <span class="comment"># =&gt; True</span></span><br><span class="line"><span class="number">1</span> &gt; <span class="number">10</span>  <span class="comment"># =&gt; False</span></span><br><span class="line"><span class="number">2</span> &lt;= <span class="number">2</span>  <span class="comment"># =&gt; True</span></span><br><span class="line"><span class="number">2</span> &gt;= <span class="number">2</span>  <span class="comment"># =&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 大小比较可以连起来！</span></span><br><span class="line"><span class="number">1</span> &lt; <span class="number">2</span> &lt; <span class="number">3</span>  <span class="comment"># =&gt; True</span></span><br><span class="line"><span class="number">2</span> &lt; <span class="number">3</span> &lt; <span class="number">2</span>  <span class="comment"># =&gt; False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串用单引双引都可以</span></span><br><span class="line"><span class="string">"这是个字符串"</span></span><br><span class="line"><span class="string">'这也是个字符串'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用加号连接字符串</span></span><br><span class="line"><span class="string">"Hello "</span> + <span class="string">"world!"</span>  <span class="comment"># =&gt; "Hello world!"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串可以被当作字符列表</span></span><br><span class="line"><span class="string">"This is a string"</span>[<span class="number">0</span>]  <span class="comment"># =&gt; 'T'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用.format来格式化字符串</span></span><br><span class="line"><span class="string">"&#123;&#125; can be &#123;&#125;"</span>.format(<span class="string">"strings"</span>, <span class="string">"interpolated"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以重复参数以节省时间</span></span><br><span class="line"><span class="string">"&#123;0&#125; be nimble, &#123;0&#125; be quick, &#123;0&#125; jump over the &#123;1&#125;"</span>.format(<span class="string">"Jack"</span>, <span class="string">"candle stick"</span>)</span><br><span class="line"><span class="comment">#=&gt; "Jack be nimble, Jack be quick, Jack jump over the candle stick"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果不想数参数，可以用关键字</span></span><br><span class="line"><span class="string">"&#123;name&#125; wants to eat &#123;food&#125;"</span>.format(name=<span class="string">"Bob"</span>, food=<span class="string">"lasagna"</span>) <span class="comment">#=&gt; "Bob wants to eat lasagna"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果你的Python3程序也要在Python2.5以下环境运行，也可以用老式的格式化语法</span></span><br><span class="line"><span class="string">"%s can be %s the %s way"</span> % (<span class="string">"strings"</span>, <span class="string">"interpolated"</span>, <span class="string">"old"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># None是一个对象</span></span><br><span class="line"><span class="keyword">None</span>  <span class="comment"># =&gt; None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当与None进行比较时不要用 ==，要用is。is是用来比较两个变量是否指向同一个对象。</span></span><br><span class="line"><span class="string">"etc"</span> <span class="keyword">is</span> <span class="keyword">None</span>  <span class="comment"># =&gt; False</span></span><br><span class="line"><span class="keyword">None</span> <span class="keyword">is</span> <span class="keyword">None</span>  <span class="comment"># =&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># None，0，空字符串，空列表，空字典都算是False</span></span><br><span class="line"><span class="comment"># 所有其他值都是True</span></span><br><span class="line">bool(<span class="number">0</span>)  <span class="comment"># =&gt; False</span></span><br><span class="line">bool(<span class="string">""</span>)  <span class="comment"># =&gt; False</span></span><br><span class="line">bool([]) <span class="comment">#=&gt; False</span></span><br><span class="line">bool(&#123;&#125;) <span class="comment">#=&gt; False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"><span class="comment">## 2. 变量和集合</span></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print是内置的打印函数</span></span><br><span class="line">print(<span class="string">"I'm Python. Nice to meet you!"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在给变量赋值前不用提前声明</span></span><br><span class="line"><span class="comment"># 传统的变量命名是小写，用下划线分隔单词</span></span><br><span class="line">some_var = <span class="number">5</span></span><br><span class="line">some_var  <span class="comment"># =&gt; 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问未赋值的变量会抛出异常</span></span><br><span class="line"><span class="comment"># 参考流程控制一段来学习异常处理</span></span><br><span class="line">some_unknown_var  <span class="comment"># 抛出NameError</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用列表(list)储存序列</span></span><br><span class="line">li = []</span><br><span class="line"><span class="comment"># 创建列表时也可以同时赋给元素</span></span><br><span class="line">other_li = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用append在列表最后追加元素</span></span><br><span class="line">li.append(<span class="number">1</span>)    <span class="comment"># li现在是[1]</span></span><br><span class="line">li.append(<span class="number">2</span>)    <span class="comment"># li现在是[1, 2]</span></span><br><span class="line">li.append(<span class="number">4</span>)    <span class="comment"># li现在是[1, 2, 4]</span></span><br><span class="line">li.append(<span class="number">3</span>)    <span class="comment"># li现在是[1, 2, 4, 3]</span></span><br><span class="line"><span class="comment"># 用pop从列表尾部删除</span></span><br><span class="line">li.pop()        <span class="comment"># =&gt; 3 且li现在是[1, 2, 4]</span></span><br><span class="line"><span class="comment"># 把3再放回去</span></span><br><span class="line">li.append(<span class="number">3</span>)    <span class="comment"># li变回[1, 2, 4, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表存取跟数组一样</span></span><br><span class="line">li[<span class="number">0</span>]  <span class="comment"># =&gt; 1</span></span><br><span class="line"><span class="comment"># 取出最后一个元素</span></span><br><span class="line">li[<span class="number">-1</span>]  <span class="comment"># =&gt; 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 越界存取会造成IndexError</span></span><br><span class="line">li[<span class="number">4</span>]  <span class="comment"># 抛出IndexError</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表有切割语法</span></span><br><span class="line">li[<span class="number">1</span>:<span class="number">3</span>]  <span class="comment"># =&gt; [2, 4]</span></span><br><span class="line"><span class="comment"># 取尾</span></span><br><span class="line">li[<span class="number">2</span>:]  <span class="comment"># =&gt; [4, 3]</span></span><br><span class="line"><span class="comment"># 取头</span></span><br><span class="line">li[:<span class="number">3</span>]  <span class="comment"># =&gt; [1, 2, 4]</span></span><br><span class="line"><span class="comment"># 隔一个取一个</span></span><br><span class="line">li[::<span class="number">2</span>]   <span class="comment"># =&gt;[1, 4]</span></span><br><span class="line"><span class="comment"># 倒排列表</span></span><br><span class="line">li[::<span class="number">-1</span>]   <span class="comment"># =&gt; [3, 4, 2, 1]</span></span><br><span class="line"><span class="comment"># 可以用三个参数的任何组合来构建切割</span></span><br><span class="line"><span class="comment"># li[始:终:步伐]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用del删除任何一个元素</span></span><br><span class="line"><span class="keyword">del</span> li[<span class="number">2</span>]   <span class="comment"># li is now [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表可以相加</span></span><br><span class="line"><span class="comment"># 注意：li和other_li的值都不变</span></span><br><span class="line">li + other_li   <span class="comment"># =&gt; [1, 2, 3, 4, 5, 6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用extend拼接列表</span></span><br><span class="line">li.extend(other_li)   <span class="comment"># li现在是[1, 2, 3, 4, 5, 6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用in测试列表是否包含值</span></span><br><span class="line"><span class="number">1</span> <span class="keyword">in</span> li   <span class="comment"># =&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用len取列表长度</span></span><br><span class="line">len(li)   <span class="comment"># =&gt; 6</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 元组是不可改变的序列</span></span><br><span class="line">tup = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">tup[<span class="number">0</span>]   <span class="comment"># =&gt; 1</span></span><br><span class="line">tup[<span class="number">0</span>] = <span class="number">3</span>  <span class="comment"># 抛出TypeError</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表允许的操作元组大都可以</span></span><br><span class="line">len(tup)   <span class="comment"># =&gt; 3</span></span><br><span class="line">tup + (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)   <span class="comment"># =&gt; (1, 2, 3, 4, 5, 6)</span></span><br><span class="line">tup[:<span class="number">2</span>]   <span class="comment"># =&gt; (1, 2)</span></span><br><span class="line"><span class="number">2</span> <span class="keyword">in</span> tup   <span class="comment"># =&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以把元组合列表解包，赋值给变量</span></span><br><span class="line">a, b, c = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)     <span class="comment"># 现在a是1，b是2，c是3</span></span><br><span class="line"><span class="comment"># 元组周围的括号是可以省略的</span></span><br><span class="line">d, e, f = <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span></span><br><span class="line"><span class="comment"># 交换两个变量的值就这么简单</span></span><br><span class="line">e, d = d, e     <span class="comment"># 现在d是5，e是4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用字典表达映射关系</span></span><br><span class="line">empty_dict = &#123;&#125;</span><br><span class="line"><span class="comment"># 初始化的字典</span></span><br><span class="line">filled_dict = &#123;<span class="string">"one"</span>: <span class="number">1</span>, <span class="string">"two"</span>: <span class="number">2</span>, <span class="string">"three"</span>: <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用[]取值</span></span><br><span class="line">filled_dict[<span class="string">"one"</span>]   <span class="comment"># =&gt; 1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用keys获得所有的键。因为keys返回一个可迭代对象，所以在这里把结果包在list里。我们下面会详细介绍可迭代。</span></span><br><span class="line"><span class="comment"># 注意：字典键的顺序是不定的，你得到的结果可能和以下不同。</span></span><br><span class="line">list(filled_dict.keys())   <span class="comment"># =&gt; ["three", "two", "one"]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用values获得所有的值。跟keys一样，要用list包起来，顺序也可能不同。</span></span><br><span class="line">list(filled_dict.values())   <span class="comment"># =&gt; [3, 2, 1]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用in测试一个字典是否包含一个键</span></span><br><span class="line"><span class="string">"one"</span> <span class="keyword">in</span> filled_dict   <span class="comment"># =&gt; True</span></span><br><span class="line"><span class="number">1</span> <span class="keyword">in</span> filled_dict   <span class="comment"># =&gt; False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问不存在的键会导致KeyError</span></span><br><span class="line">filled_dict[<span class="string">"four"</span>]   <span class="comment"># KeyError</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用get来避免KeyError</span></span><br><span class="line">filled_dict.get(<span class="string">"one"</span>)   <span class="comment"># =&gt; 1</span></span><br><span class="line">filled_dict.get(<span class="string">"four"</span>)   <span class="comment"># =&gt; None</span></span><br><span class="line"><span class="comment"># 当键不存在的时候get方法可以返回默认值</span></span><br><span class="line">filled_dict.get(<span class="string">"one"</span>, <span class="number">4</span>)   <span class="comment"># =&gt; 1</span></span><br><span class="line">filled_dict.get(<span class="string">"four"</span>, <span class="number">4</span>)   <span class="comment"># =&gt; 4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># setdefault方法只有当键不存在的时候插入新值</span></span><br><span class="line">filled_dict.setdefault(<span class="string">"five"</span>, <span class="number">5</span>)  <span class="comment"># filled_dict["five"]设为5</span></span><br><span class="line">filled_dict.setdefault(<span class="string">"five"</span>, <span class="number">6</span>)  <span class="comment"># filled_dict["five"]还是5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典赋值</span></span><br><span class="line">filled_dict.update(&#123;<span class="string">"four"</span>:<span class="number">4</span>&#125;) <span class="comment">#=&gt; &#123;"one": 1, "two": 2, "three": 3, "four": 4&#125;</span></span><br><span class="line">filled_dict[<span class="string">"four"</span>] = <span class="number">4</span>  <span class="comment"># 另一种赋值方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用del删除</span></span><br><span class="line"><span class="keyword">del</span> filled_dict[<span class="string">"one"</span>]  <span class="comment"># 从filled_dict中把one删除</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用set表达集合</span></span><br><span class="line">empty_set = set()</span><br><span class="line"><span class="comment"># 初始化一个集合，语法跟字典相似。</span></span><br><span class="line">some_set = &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;   <span class="comment"># some_set现在是&#123;1, 2, 3, 4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以把集合赋值于变量</span></span><br><span class="line">filled_set = some_set</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为集合添加元素</span></span><br><span class="line">filled_set.add(<span class="number">5</span>)   <span class="comment"># filled_set现在是&#123;1, 2, 3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &amp; 取交集</span></span><br><span class="line">other_set = &#123;<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">filled_set &amp; other_set   <span class="comment"># =&gt; &#123;3, 4, 5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># | 取并集</span></span><br><span class="line">filled_set | other_set   <span class="comment"># =&gt; &#123;1, 2, 3, 4, 5, 6&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># - 取补集</span></span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125; - &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;   <span class="comment"># =&gt; &#123;1, 4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># in 测试集合是否包含元素</span></span><br><span class="line"><span class="number">2</span> <span class="keyword">in</span> filled_set   <span class="comment"># =&gt; True</span></span><br><span class="line"><span class="number">10</span> <span class="keyword">in</span> filled_set   <span class="comment"># =&gt; False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"><span class="comment">## 3. 流程控制和迭代器</span></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 先随便定义一个变量</span></span><br><span class="line">some_var = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这是个if语句。注意缩进在Python里是有意义的</span></span><br><span class="line"><span class="comment"># 印出"some_var比10小"</span></span><br><span class="line"><span class="keyword">if</span> some_var &gt; <span class="number">10</span>:</span><br><span class="line">    print(<span class="string">"some_var比10大"</span>)</span><br><span class="line"><span class="keyword">elif</span> some_var &lt; <span class="number">10</span>:    <span class="comment"># elif句是可选的</span></span><br><span class="line">    print(<span class="string">"some_var比10小"</span>)</span><br><span class="line"><span class="keyword">else</span>:                  <span class="comment"># else也是可选的</span></span><br><span class="line">    print(<span class="string">"some_var就是10"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">用for循环语句遍历列表</span></span><br><span class="line"><span class="string">打印:</span></span><br><span class="line"><span class="string">    dog is a mammal</span></span><br><span class="line"><span class="string">    cat is a mammal</span></span><br><span class="line"><span class="string">    mouse is a mammal</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">for</span> animal <span class="keyword">in</span> [<span class="string">"dog"</span>, <span class="string">"cat"</span>, <span class="string">"mouse"</span>]:</span><br><span class="line">    print(<span class="string">"&#123;&#125; is a mammal"</span>.format(animal))</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"range(number)"返回数字列表从0到给的数字</span></span><br><span class="line"><span class="string">打印:</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">while循环直到条件不满足</span></span><br><span class="line"><span class="string">打印:</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">x = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> x &lt; <span class="number">4</span>:</span><br><span class="line">    print(x)</span><br><span class="line">    x += <span class="number">1</span>  <span class="comment"># x = x + 1 的简写</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用try/except块处理异常状况</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 用raise抛出异常</span></span><br><span class="line">    <span class="keyword">raise</span> IndexError(<span class="string">"This is an index error"</span>)</span><br><span class="line"><span class="keyword">except</span> IndexError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="keyword">pass</span>    <span class="comment"># pass是无操作，但是应该在这里处理错误</span></span><br><span class="line"><span class="keyword">except</span> (TypeError, NameError):</span><br><span class="line">    <span class="keyword">pass</span>    <span class="comment"># 可以同时处理不同类的错误</span></span><br><span class="line"><span class="keyword">else</span>:   <span class="comment"># else语句是可选的，必须在所有的except之后</span></span><br><span class="line">    print(<span class="string">"All good!"</span>)   <span class="comment"># 只有当try运行完没有错误的时候这句才会运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python提供一个叫做可迭代(iterable)的基本抽象。一个可迭代对象是可以被当作序列</span></span><br><span class="line"><span class="comment"># 的对象。比如说上面range返回的对象就是可迭代的。</span></span><br><span class="line"></span><br><span class="line">filled_dict = &#123;<span class="string">"one"</span>: <span class="number">1</span>, <span class="string">"two"</span>: <span class="number">2</span>, <span class="string">"three"</span>: <span class="number">3</span>&#125;</span><br><span class="line">our_iterable = filled_dict.keys()</span><br><span class="line">print(our_iterable) <span class="comment"># =&gt; range(1,10) 是一个实现可迭代接口的对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可迭代对象可以遍历</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> our_iterable:</span><br><span class="line">    print(i)    <span class="comment"># 打印 one, two, three</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 但是不可以随机访问</span></span><br><span class="line">our_iterable[<span class="number">1</span>]  <span class="comment"># 抛出TypeError</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可迭代对象知道怎么生成迭代器</span></span><br><span class="line">our_iterator = iter(our_iterable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 迭代器是一个可以记住遍历的位置的对象</span></span><br><span class="line"><span class="comment"># 用__next__可以取得下一个元素</span></span><br><span class="line">our_iterator.__next__()  <span class="comment">#=&gt; "one"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 再一次调取__next__时会记得位置</span></span><br><span class="line">our_iterator.__next__()  <span class="comment">#=&gt; "two"</span></span><br><span class="line">our_iterator.__next__()  <span class="comment">#=&gt; "three"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当迭代器所有元素都取出后，会抛出StopIteration</span></span><br><span class="line">our_iterator.__next__() <span class="comment"># 抛出StopIteration</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以用list一次取出迭代器所有的元素</span></span><br><span class="line">list(filled_dict.keys())  <span class="comment">#=&gt; Returns ["one", "two", "three"]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"><span class="comment">## 4. 函数</span></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用def定义新函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    print(<span class="string">"x is &#123;&#125; and y is &#123;&#125;"</span>.format(x, y))</span><br><span class="line">    <span class="keyword">return</span> x + y    <span class="comment"># 用return语句返回</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数</span></span><br><span class="line">add(<span class="number">5</span>, <span class="number">6</span>)   <span class="comment"># =&gt; 印出"x is 5 and y is 6"并且返回11</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用关键字参数来调用函数</span></span><br><span class="line">add(y=<span class="number">6</span>, x=<span class="number">5</span>)   <span class="comment"># 关键字参数可以用任何顺序</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们可以定义一个可变参数函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">varargs</span><span class="params">(*args)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> args</span><br><span class="line"></span><br><span class="line">varargs(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)   <span class="comment"># =&gt; (1, 2, 3)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们也可以定义一个关键字可变参数函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">keyword_args</span><span class="params">(**kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> kwargs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们来看看结果是什么：</span></span><br><span class="line">keyword_args(big=<span class="string">"foot"</span>, loch=<span class="string">"ness"</span>)   <span class="comment"># =&gt; &#123;"big": "foot", "loch": "ness"&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这两种可变参数可以混着用</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">all_the_args</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">    print(args)</span><br><span class="line">    print(kwargs)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">all_the_args(1, 2, a=3, b=4) prints:</span></span><br><span class="line"><span class="string">    (1, 2)</span></span><br><span class="line"><span class="string">    &#123;"a": 3, "b": 4&#125;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用可变参数函数时可以做跟上面相反的，用*展开序列，用**展开字典。</span></span><br><span class="line">args = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">kwargs = &#123;<span class="string">"a"</span>: <span class="number">3</span>, <span class="string">"b"</span>: <span class="number">4</span>&#125;</span><br><span class="line">all_the_args(*args)   <span class="comment"># 相当于 foo(1, 2, 3, 4)</span></span><br><span class="line">all_the_args(**kwargs)   <span class="comment"># 相当于 foo(a=3, b=4)</span></span><br><span class="line">all_the_args(*args, **kwargs)   <span class="comment"># 相当于 foo(1, 2, 3, 4, a=3, b=4)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数作用域</span></span><br><span class="line">x = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setX</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="comment"># 局部作用域的x和全局域的x是不同的</span></span><br><span class="line">    x = num <span class="comment"># =&gt; 43</span></span><br><span class="line">    <span class="keyword">print</span> (x) <span class="comment"># =&gt; 43</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setGlobalX</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    <span class="keyword">print</span> (x) <span class="comment"># =&gt; 5</span></span><br><span class="line">    x = num <span class="comment"># 现在全局域的x被赋值</span></span><br><span class="line">    <span class="keyword">print</span> (x) <span class="comment"># =&gt; 6</span></span><br><span class="line"></span><br><span class="line">setX(<span class="number">43</span>)</span><br><span class="line">setGlobalX(<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数在Python是一等公民</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_adder</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">adder</span><span class="params">(y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x + y</span><br><span class="line">    <span class="keyword">return</span> adder</span><br><span class="line"></span><br><span class="line">add_10 = create_adder(<span class="number">10</span>)</span><br><span class="line">add_10(<span class="number">3</span>)   <span class="comment"># =&gt; 13</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 也有匿名函数</span></span><br><span class="line">(<span class="keyword">lambda</span> x: x &gt; <span class="number">2</span>)(<span class="number">3</span>)   <span class="comment"># =&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 内置的高阶函数</span></span><br><span class="line">map(add_10, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])   <span class="comment"># =&gt; [11, 12, 13]</span></span><br><span class="line">filter(<span class="keyword">lambda</span> x: x &gt; <span class="number">5</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])   <span class="comment"># =&gt; [6, 7]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用列表推导式可以简化映射和过滤。列表推导式的返回值是另一个列表。</span></span><br><span class="line">[add_10(i) <span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]  <span class="comment"># =&gt; [11, 12, 13]</span></span><br><span class="line">[x <span class="keyword">for</span> x <span class="keyword">in</span> [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>] <span class="keyword">if</span> x &gt; <span class="number">5</span>]   <span class="comment"># =&gt; [6, 7]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"><span class="comment">## 5. 类</span></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个继承object的类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 类属性，被所有此类的实例共用。</span></span><br><span class="line">    species = <span class="string">"H. sapiens"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 构造方法，当实例被初始化时被调用。注意名字前后的双下划线，这是表明这个属</span></span><br><span class="line">    <span class="comment"># 性或方法对Python有特殊意义，但是允许用户自行定义。你自己取名时不应该用这</span></span><br><span class="line">    <span class="comment"># 种格式。</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        <span class="comment"># Assign the argument to the instance's name attribute</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 实例方法，第一个参数总是self，就是这个实例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">(self, msg)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"&#123;name&#125;: &#123;message&#125;"</span>.format(name=self.name, message=msg)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 类方法，被所有此类的实例共用。第一个参数是这个类对象。</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_species</span><span class="params">(cls)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> cls.species</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 静态方法。调用时没有实例或类的绑定。</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">grunt</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"*grunt*"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造一个实例</span></span><br><span class="line">i = Human(name=<span class="string">"Ian"</span>)</span><br><span class="line">print(i.say(<span class="string">"hi"</span>))     <span class="comment"># 印出 "Ian: hi"</span></span><br><span class="line"></span><br><span class="line">j = Human(<span class="string">"Joel"</span>)</span><br><span class="line">print(j.say(<span class="string">"hello"</span>))  <span class="comment"># 印出 "Joel: hello"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用一个类方法</span></span><br><span class="line">i.get_species()   <span class="comment"># =&gt; "H. sapiens"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 改一个共用的类属性</span></span><br><span class="line">Human.species = <span class="string">"H. neanderthalensis"</span></span><br><span class="line">i.get_species()   <span class="comment"># =&gt; "H. neanderthalensis"</span></span><br><span class="line">j.get_species()   <span class="comment"># =&gt; "H. neanderthalensis"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用静态方法</span></span><br><span class="line">Human.grunt()   <span class="comment"># =&gt; "*grunt*"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"><span class="comment">## 6. 模块</span></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用import导入模块</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">print(math.sqrt(<span class="number">16</span>))  <span class="comment"># =&gt; 4.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以从模块中导入个别值</span></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> ceil, floor</span><br><span class="line">print(ceil(<span class="number">3.7</span>))  <span class="comment"># =&gt; 4.0</span></span><br><span class="line">print(floor(<span class="number">3.7</span>))   <span class="comment"># =&gt; 3.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以导入一个模块中所有值</span></span><br><span class="line"><span class="comment"># 警告：不建议这么做</span></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如此缩写模块名字</span></span><br><span class="line"><span class="keyword">import</span> math <span class="keyword">as</span> m</span><br><span class="line">math.sqrt(<span class="number">16</span>) == m.sqrt(<span class="number">16</span>)   <span class="comment"># =&gt; True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python模块其实就是普通的Python文件。你可以自己写，然后导入，</span></span><br><span class="line"><span class="comment"># 模块的名字就是文件的名字。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 你可以这样列出一个模块里所有的值</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">dir(math)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"><span class="comment">## 7. 高级用法</span></span><br><span class="line"><span class="comment">####################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用生成器(generators)方便地写惰性运算</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">double_numbers</span><span class="params">(iterable)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">yield</span> i + i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成器只有在需要时才计算下一个值。它们每一次循环只生成一个值，而不是把所有的</span></span><br><span class="line"><span class="comment"># 值全部算好。这意味着double_numbers不会生成大于15的数字。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># range的返回值也是一个生成器，不然一个1到900000000的列表会花很多时间和内存。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 如果你想用一个Python的关键字当作变量名，可以加一个下划线来区分。</span></span><br><span class="line">range_ = range(<span class="number">1</span>, <span class="number">900000000</span>)</span><br><span class="line"><span class="comment"># 当找到一个 &gt;=30 的结果就会停</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> double_numbers(range_):</span><br><span class="line">    print(i)</span><br><span class="line">    <span class="keyword">if</span> i &gt;= <span class="number">30</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 装饰器(decorators)</span></span><br><span class="line"><span class="comment"># 这个例子中，beg装饰say</span></span><br><span class="line"><span class="comment"># beg会先调用say。如果返回的say_please为真，beg会改变返回的字符串。</span></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> wraps</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">beg</span><span class="params">(target_function)</span>:</span></span><br><span class="line"><span class="meta">    @wraps(target_function)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        msg, say_please = target_function(*args, **kwargs)</span><br><span class="line">        <span class="keyword">if</span> say_please:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"&#123;&#125; &#123;&#125;"</span>.format(msg, <span class="string">"Please! I am poor :("</span>)</span><br><span class="line">        <span class="keyword">return</span> msg</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@beg</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">(say_please=False)</span>:</span></span><br><span class="line">    msg = <span class="string">"Can you buy me a beer?"</span></span><br><span class="line">    <span class="keyword">return</span> msg, say_please</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(say())  <span class="comment"># Can you buy me a beer?</span></span><br><span class="line">print(say(say_please=<span class="keyword">True</span>))  <span class="comment"># Can you buy me a beer? Please! I am poor :(</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/11/18/Python2基础教程/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">(转)Python2教程</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/10/18/css基础教程/">
+        <span class="next-text nav-default">(转)css基础教程</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+
+  </body>
+</html>

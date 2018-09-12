@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Android内存泄露总结"/>
+
+
+
+
+  <meta name="keywords" content="Android, 散落的蒲公英" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="散落的蒲公英">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
+
+
+
+<link rel="canonical" href="https://ruihuancao.github.io/2016/09/12/Android内存泄漏总结/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"散落的蒲公英","subtitle":"万物之中，希望至美；至美之物，永不凋零","description":"我们就这样一起到老吧","author":"曹瑞环","language":"zh-CN","timezone":null,"url":"https://ruihuancao.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":true,"line_number":false,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":15,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:ruihuancao/ruihuancao.github.io.git","branch":"master"},"ignore":[],"avatar":"/images/avatar.png","favicon":"/favicon.ico","archive_generator":{"per_page":20,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":20},"tag_generator":{"per_page":20},"index_generator":{"per_page":20,"order_by":"-date"},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"rss":"default","menu":{"Home":"/","Archives":"/archives/","Categories":"/categories/","Tags":"/tags"},"color":"default","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"ruihuancao@email.com","github":"https://github.com/ruihuancao"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
+
+    <title> Android内存泄露总结 - 散落的蒲公英 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">散落的蒲公英</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">散落的蒲公英</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android内存泄露总结
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-09-12
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/开发/">开发</a>
+            
+              <a href="/categories/开发/Android/">Android</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java内存分配策略"><span class="toc-text">Java内存分配策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java内存管理"><span class="toc-text">Java内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java中的内存泄露"><span class="toc-text">Java中的内存泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android中常见的内存泄漏"><span class="toc-text">Android中常见的内存泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存泄露解决办法"><span class="toc-text">内存泄露解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工具"><span class="toc-text">工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发过程中解决问题方法"><span class="toc-text">开发过程中解决问题方法</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>开发过程中如何避免内存泄露，以及内存泄露查看方法总结。内存泄露简单说就是，该被释放的对象没有被释放，存在引用无法被GC回收.<br><a id="more"></a></p>
+<h2 id="Java内存分配策略"><a href="#Java内存分配策略" class="headerlink" title="Java内存分配策略"></a>Java内存分配策略</h2><p>java内存分配策略有3种：静态分配,栈式分配,和堆式分配，对应内存存储空间，静态存储区（方法区）、栈区和堆区。</p>
+<ul>
+<li>静态存储区（方法区）：主要存放静态数据、全局 static 数据和常量。这块内存在程序编译时就已经分配好，并且在程序整个运行期间都存在。</li>
+<li>栈区 ：当方法被执行时，方法体内的局部变量都在栈上创建，并在方法执行结束时这些局部变量所持有的内存将会自动被释放。因为栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限。</li>
+<li>堆区 ： 又称动态内存分配，通常就是指在程序运行时直接 new 出来的内存。这部分内存在不使用时将会由 Java 垃圾回收器来负责回收。</li>
+</ul>
+<p>栈存储的是基本类型的变量和对象的引用（指向堆中对象的内存首地址）<br>堆中存放的是成员变量（对象的实体），由java垃圾回收期管理。</p>
+<h2 id="Java内存管理"><a href="#Java内存管理" class="headerlink" title="Java内存管理"></a>Java内存管理</h2><p>Java的内存管理就是对象的分配和释放问题。<br>Java使用有向图的方式进行内存管理。如果某个对象与这个根顶点不可达,那么我们认为这个对象不再被引用，可以被 GC 回收。</p>
+<h2 id="Java中的内存泄露"><a href="#Java中的内存泄露" class="headerlink" title="Java中的内存泄露"></a>Java中的内存泄露</h2><p>存在一些被分配的对象，已经没有使用，但是在有向图中可达。意味着存在引用,不在使用的对象无法别GC回收。</p>
+<h2 id="Android中常见的内存泄漏"><a href="#Android中常见的内存泄漏" class="headerlink" title="Android中常见的内存泄漏"></a>Android中常见的内存泄漏</h2><ul>
+<li>集合类泄漏<br>经常在做缓存的时候常使用map的全局变量，如果只添加对象，没有相应的删除机制，添加进去的对象则一致无法被回收，内存泄露。</li>
+<li><p>单例造成的内存泄漏<br>在做数据层时，常建立单例引用。单例在整个程序运行期间一致存在，建立时需要传入一个Context,<br>如果传入一个ApplicationContext,它在程序运行期间一致存在，没有问题。<br>如果传入Activity Context，及时Activity生命周期结束，由于存在单例引用，导致GC无法回收，内存泄露。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataManager</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> DataManager instance;</span><br><span class="line">    <span class="comment">// 如果传入Activity导致其被单例引用，无法被回收内存泄露</span></span><br><span class="line">    <span class="comment">// 需要传入Applicaltion Context</span></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DataManager</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DataManager <span class="title">getInstance</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (DataManager.class)&#123;</span><br><span class="line">            <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                instance = <span class="keyword">new</span> DataManager(context);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>非静态内部类<br>非静态内部类默认持有外部类引用，静态变量在整个应用期间可用，这就导致一直持有Activity，Activity无法被回收。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> static <span class="type">Test</span> mTest = <span class="literal">null</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> void onCreate(<span class="meta">@Nullable</span> <span class="type">Bundle</span> savedInstanceState) &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        mTest = <span class="keyword">new</span> <span class="type">Test</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匿名内部类<br>如果runnable线程与Activity生命周期不一致，则内存泄漏，runnable默认持有Activity引用，Activity结束，线程未结束，无法回收。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line">    <span class="type">Runnable</span> runnable = <span class="keyword">new</span> <span class="type">Runnable</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        public void run() &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Handler造成的内存泄漏<br>这个很常见，解决办法，静态内部类 + WeakReference<br>Java对引用的分类有 Strong reference, SoftReference, WeakReference, PhatomReference 四种<br>除了强引用，后3中都可以被GC回收</p>
+<figure class="highlight aspectj"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Handler <span class="keyword">handler</span> = <span class="keyword">new</span> Handler()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.handleMessage(msg);</span><br><span class="line">            test();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="keyword">handler</span>.postDelayed(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">1000</span>*<span class="number">60</span>*<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>资源未关闭或未取消注册的内存泄露<br>io操作，BraodcastReceiver，数据库操游标等</p>
+</li>
+</ul>
+<h2 id="内存泄露解决办法"><a href="#内存泄露解决办法" class="headerlink" title="内存泄露解决办法"></a>内存泄露解决办法</h2><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ul>
+<li>Android Studio Memory Monitor<br>可以查看内存情况，触发GC，快速定位卡顿，Crash，内存泄露等其他问题，都可以查看。<br>例：<br>查看内存变化，打开一个页面然后关闭，手动触发GC，查看内存变化，如此重复几次，一直显著增加，则内存泄露。<br>Heap Viewer 在Memory中点击Dump Java Heap 就可以查看分配情况。<br>Allocation Tracker 记录一段时间内的分配情况，有助于分析问题</li>
+<li>LeakCanary<br>开源项目，检测内存泄露，很好用，自行google。</li>
+</ul>
+<p>这些查找方法没什么特别，都是在寻找异常的对象，然后查看它的引用，找出存在问题。有的问题看一下就知道，有时候根本不需要去查看，比如上面的常见问题，其他的复杂问题，需要根据日志或者异常点定点查找，更加快速。但更主要的是了解为什么发生内存泄露，从而在写代码的时候就尽量去避免问题产生。</p>
+<h2 id="开发过程中解决问题方法"><a href="#开发过程中解决问题方法" class="headerlink" title="开发过程中解决问题方法"></a>开发过程中解决问题方法</h2><p>要掌握的主要还是解决问题的方法，而不是特定的问题。解决问题通常都能找到解决方案，花时间的主要还是定位问题</p>
+<ul>
+<li>查看日志。常见的异常如空指针等可以直接定位问题，日志搜索过滤ANR等信息</li>
+<li>搜索引擎。google，<a href="http://stackoverflow.com" target="_blank" rel="noopener">社区</a></li>
+<li>查看源码和官方文档。这是解决问题最直接有效的方式。</li>
+</ul>
+<p>实际中一般是多种方式组合能很快解决</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Android/">Android</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/09/15/HashMap的工作原理/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">HashMap的工作原理</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/09/10/Android源码编译/">
+        <span class="next-text nav-default">Android源码编译</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+
+  </body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Android动画总结"/>
+
+
+
+
+  <meta name="keywords" content="Android, 散落的蒲公英" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="散落的蒲公英">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
+
+
+
+<link rel="canonical" href="https://ruihuancao.github.io/2015/05/12/Android动画总结/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"散落的蒲公英","subtitle":"万物之中，希望至美；至美之物，永不凋零","description":"我们就这样一起到老吧","author":"曹瑞环","language":"zh-CN","timezone":null,"url":"https://ruihuancao.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":true,"line_number":false,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":15,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:ruihuancao/ruihuancao.github.io.git","branch":"master"},"ignore":[],"avatar":"/images/avatar.png","favicon":"/favicon.ico","archive_generator":{"per_page":20,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":20},"tag_generator":{"per_page":20},"index_generator":{"per_page":20,"order_by":"-date"},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"rss":"default","menu":{"Home":"/","Archives":"/archives/","Categories":"/categories/","Tags":"/tags"},"color":"default","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"ruihuancao@email.com","github":"https://github.com/ruihuancao"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
+
+    <title> Android动画总结 - 散落的蒲公英 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">散落的蒲公英</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">散落的蒲公英</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android动画总结
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2015-05-12
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/开发/">开发</a>
+            
+              <a href="/categories/开发/Android/">Android</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#补间动画"><span class="toc-text">补间动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#帧动画"><span class="toc-text">帧动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性动画"><span class="toc-text">属性动画</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>android 动画基本使用总结</p>
+<a id="more"></a>
+<h2 id="补间动画"><a href="#补间动画" class="headerlink" title="补间动画"></a>补间动画</h2><p>Android的animation包括4中类型：<br>xml中：alpha 透明， scale 尺寸伸缩， translate 平移， rotale 旋转<br>代码中：AlphaAnimation 透明，ScaleAnimation 尺寸伸缩，TranslateAnimation 平移，RotateAnimation 旋转</p>
+<ul>
+<li><ol>
+<li>新建anim文件夹</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>新建xml文件</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">xml</span><br><span class="line"> <span class="tag">&lt;<span class="name">alpha</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:fromAlpha</span>=<span class="string">"1.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:toAlpha</span>=<span class="string">"0.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:duration</span>=<span class="string">"300"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 透明度控制动画效果 alpha</span></span><br><span class="line"><span class="comment">        浮点型值：</span></span><br><span class="line"><span class="comment">            fromAlpha 属性为动画起始时透明度</span></span><br><span class="line"><span class="comment">            toAlpha   属性为动画结束时透明度</span></span><br><span class="line"><span class="comment">            说明:</span></span><br><span class="line"><span class="comment">                0.0表示完全透明</span></span><br><span class="line"><span class="comment">                1.0表示完全不透明</span></span><br><span class="line"><span class="comment">            以上值取0.0-1.0之间的float数据类型的数字</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        长整型值：</span></span><br><span class="line"><span class="comment">            duration  属性为动画持续时间</span></span><br><span class="line"><span class="comment">            说明:</span></span><br><span class="line"><span class="comment">                时间以毫秒为单位--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scale</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:interpolator</span>=<span class="string">"@android:anim/accelerate_decelerate_interpolator"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromXScale</span>=<span class="string">"0.0"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toXScale</span>=<span class="string">"1.4"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromYScale</span>=<span class="string">"0.0"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toYScale</span>=<span class="string">"1.4"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fillAfter</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:duration</span>=<span class="string">"700"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 尺寸伸缩动画效果 scale</span></span><br><span class="line"><span class="comment">       属性：interpolator 指定一个动画的插入器</span></span><br><span class="line"><span class="comment">        有三种动画插入器:</span></span><br><span class="line"><span class="comment">            accelerate_decelerate_interpolator  加速-减速 动画插入器</span></span><br><span class="line"><span class="comment">            accelerate_interpolator        	加速-动画插入器</span></span><br><span class="line"><span class="comment">            decelerate_interpolator        	减速- 动画插入器</span></span><br><span class="line"><span class="comment">        其他的属于特定的动画效果</span></span><br><span class="line"><span class="comment">      浮点型值：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            fromXScale 属性为动画起始时 X坐标上的伸缩尺寸</span></span><br><span class="line"><span class="comment">            toXScale   属性为动画结束时 X坐标上的伸缩尺寸</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            fromYScale 属性为动画起始时Y坐标上的伸缩尺寸</span></span><br><span class="line"><span class="comment">            toYScale   属性为动画结束时Y坐标上的伸缩尺寸</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            说明:</span></span><br><span class="line"><span class="comment">                 以上四种属性值</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">                    0.0表示收缩到没有</span></span><br><span class="line"><span class="comment">                    1.0表示正常无伸缩</span></span><br><span class="line"><span class="comment">                    值小于1.0表示收缩</span></span><br><span class="line"><span class="comment">                    值大于1.0表示放大</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            pivotX     属性为动画相对于物件的X坐标的开始位置</span></span><br><span class="line"><span class="comment">            pivotY     属性为动画相对于物件的Y坐标的开始位置</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            说明:</span></span><br><span class="line"><span class="comment">                    以上两个属性值 从0%-100%中取值</span></span><br><span class="line"><span class="comment">                    50%为物件的X或Y方向坐标上的中点位置</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        长整型值：</span></span><br><span class="line"><span class="comment">            duration  属性为动画持续时间</span></span><br><span class="line"><span class="comment">            说明:   时间以毫秒为单位</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        布尔型值:</span></span><br><span class="line"><span class="comment">            fillAfter 属性 当设置为true ，该动画转化在动画结束后被应用</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">translate</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromXDelta</span>=<span class="string">"30"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toXDelta</span>=<span class="string">"-80"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromYDelta</span>=<span class="string">"30"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toYDelta</span>=<span class="string">"300"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:duration</span>=<span class="string">"2000"</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- translate 位置转移动画效果</span></span><br><span class="line"><span class="comment">            整型值:</span></span><br><span class="line"><span class="comment">                fromXDelta 属性为动画起始时 X坐标上的位置</span></span><br><span class="line"><span class="comment">                toXDelta   属性为动画结束时 X坐标上的位置</span></span><br><span class="line"><span class="comment">                fromYDelta 属性为动画起始时 Y坐标上的位置</span></span><br><span class="line"><span class="comment">                toYDelta   属性为动画结束时 Y坐标上的位置</span></span><br><span class="line"><span class="comment">                注意:</span></span><br><span class="line"><span class="comment">                         没有指定fromXType toXType fromYType toYType 时候，</span></span><br><span class="line"><span class="comment">                         默认是以自己为相对参照物</span></span><br><span class="line"><span class="comment">            长整型值：</span></span><br><span class="line"><span class="comment">                duration  属性为动画持续时间</span></span><br><span class="line"><span class="comment">                说明:   时间以毫秒为单位</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">rotate</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:interpolator</span>=<span class="string">"@android:anim/accelerate_decelerate_interpolator"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromDegrees</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toDegrees</span>=<span class="string">"+350"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:duration</span>=<span class="string">"3000"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- rotate 旋转动画效果</span></span><br><span class="line"><span class="comment">           属性：interpolator 指定一个动画的插入器</span></span><br><span class="line"><span class="comment">                 有三种动画插入器:</span></span><br><span class="line"><span class="comment">                    accelerate_decelerate_interpolator   	加速-减速 动画插入器</span></span><br><span class="line"><span class="comment">                    accelerate_interpolator               	加速-动画插入器</span></span><br><span class="line"><span class="comment">                    decelerate_interpolator               	减速- 动画插入器</span></span><br><span class="line"><span class="comment">                 其他的属于特定的动画效果</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">           浮点数型值:</span></span><br><span class="line"><span class="comment">                fromDegrees 属性为动画起始时物件的角度</span></span><br><span class="line"><span class="comment">                toDegrees   属性为动画结束时物件旋转的角度 可以大于360度</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">                说明:</span></span><br><span class="line"><span class="comment">                         当角度为负数——表示逆时针旋转</span></span><br><span class="line"><span class="comment">                         当角度为正数——表示顺时针旋转</span></span><br><span class="line"><span class="comment">                         (负数from——to正数:顺时针旋转)</span></span><br><span class="line"><span class="comment">                         (负数from——to负数:逆时针旋转)</span></span><br><span class="line"><span class="comment">                         (正数from——to正数:顺时针旋转)</span></span><br><span class="line"><span class="comment">                         (正数from——to负数:逆时针旋转)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">                pivotX     属性为动画相对于物件的X坐标的开始位置</span></span><br><span class="line"><span class="comment">                pivotY     属性为动画相对于物件的Y坐标的开始位置</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">                说明:        以上两个属性值 从0%-100%中取值</span></span><br><span class="line"><span class="comment">                             50%为物件的X或Y方向坐标上的中点位置</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            长整型值：</span></span><br><span class="line"><span class="comment">                duration  属性为动画持续时间</span></span><br><span class="line"><span class="comment">                说明:       时间以毫秒为单位</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">java</span><br><span class="line">myAnimation= AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.my_anim);</span><br><span class="line"><span class="comment">//使用AnimationUtils类的静态方法loadAnimation()来加载XML中的动画XML文件</span></span><br></pre></td></tr></table></figure>
+<h2 id="帧动画"><a href="#帧动画" class="headerlink" title="帧动画"></a>帧动画</h2><p>image_anim.xml<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">animation-list</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>  </span></span><br><span class="line"><span class="tag">            <span class="attr">android:oneshot</span>=<span class="string">"false"</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/icon1"</span> <span class="attr">android:duration</span>=<span class="string">"200"</span> /&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/icon2"</span> <span class="attr">android:duration</span>=<span class="string">"200"</span> /&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/icon3"</span> <span class="attr">android:duration</span>=<span class="string">"200"</span> /&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">animation-list</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>调用代码<br><figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">ImageView imageView = (ImageView) findViewById(R.id.image_view)<span class="comment">;  </span></span><br><span class="line">imageView.setBackgroundResource(R.drawable.image_anim)<span class="comment">;  </span></span><br><span class="line">AnimationDrawable imageAnimation = (AnimationDrawable) imageView.getBackground()<span class="comment">;  </span></span><br><span class="line">imageAnimation.start()<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="属性动画"><a href="#属性动画" class="headerlink" title="属性动画"></a>属性动画</h2><p>res/animator目录下创建文件<br>属性动画支持的 Tag 有<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">ValueAnimator - <span class="tag">&lt;<span class="name">animator</span>&gt;</span></span><br><span class="line">ObjectAnimator - <span class="tag">&lt;<span class="name">objectAnimator</span>&gt;</span></span><br><span class="line">AnimatorSet - <span class="tag">&lt;<span class="name">set</span>&gt;</span>、</span><br></pre></td></tr></table></figure></p>
+<p>xml<br><figure class="highlight lasso"><table><tr><td class="code"><pre><span class="line"><span class="built_in">xml</span></span><br><span class="line">&lt;<span class="built_in">set</span> android:ordering=<span class="string">"sequentially"</span>&gt;</span><br><span class="line">    &lt;<span class="built_in">set</span>&gt;</span><br><span class="line">        &lt;objectAnimator</span><br><span class="line">            android:propertyName=<span class="string">"x"</span></span><br><span class="line">            android:<span class="built_in">duration</span>=<span class="string">"500"</span></span><br><span class="line">            android:valueTo=<span class="string">"400"</span></span><br><span class="line">            android:valueType=<span class="string">"intType"</span>/&gt;</span><br><span class="line">        &lt;objectAnimator</span><br><span class="line">            android:propertyName=<span class="string">"y"</span></span><br><span class="line">            android:<span class="built_in">duration</span>=<span class="string">"500"</span></span><br><span class="line">            android:valueTo=<span class="string">"300"</span></span><br><span class="line">            android:valueType=<span class="string">"intType"</span>/&gt;</span><br><span class="line">    &lt;/<span class="built_in">set</span>&gt;</span><br><span class="line">    &lt;objectAnimator</span><br><span class="line">        android:propertyName=<span class="string">"alpha"</span></span><br><span class="line">        android:<span class="built_in">duration</span>=<span class="string">"500"</span></span><br><span class="line">        android:valueTo=<span class="string">"1f"</span>/&gt;</span><br><span class="line">&lt;/<span class="built_in">set</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>使用代码</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">AnimatorSet <span class="keyword">set</span> = (AnimatorSet) AnimatorInflater.loadAnimator(myContext,</span><br><span class="line">    R.anim.property_animator);</span><br><span class="line"><span class="keyword">set</span>.setTarget(myObject);</span><br><span class="line"><span class="keyword">set</span>.start();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>set<br>动画集合节点，有一个属性 ordering，表示它的子动画启动方式是先后有序的还是同时。<br>属性<br>sequentially：动画按照先后顺序<br>together (default) ：动画同时启动</li>
+<li>objectAnimator<br>一个对象的一个属性，相应的 Java 类为:ObjectAnimator</li>
+</ul>
+<p>属性说明</p>
+<ul>
+<li>android:propertyName<br>String 类型，必须要设定的值，代表要执行动画的属性，通过名字引用，比如你可以指定了一个 View 的”alpha” 或者 “backgroundColor”，这个 objectAnimator 元素没有暴露 target 属性，因此不能够在 XML 中执行一个动画，必须通过调用loadAnimator() 填充你的 XML 动画资源，并且调用setTarget() 应用到拥有这个属性的目标对象上。</li>
+<li>android:valueTo<br>Float、int 或者 color，也是必须值，表明了动画结束的点，颜色由 6 位十六进制的数字表示。</li>
+<li>android:valueFrom<br>相对应 valueTo，动画的起始点，如果没有指定，系统会通过属性身上的 get 方法获取，颜色也是 6 位十六进制的数字表示。</li>
+<li>android:duration<br>动画的时长，int 类型，以毫秒为单位，默认为 300 毫秒。</li>
+<li>android:startOffset<br>动画延迟的时间，从调用 start 方法后开始计算，int 型，毫秒为单位，</li>
+<li>android:repeatCount<br>一个动画的重复次数，int 型，”-1“表示无限循环，”1“表示动画在第一次执行完成后重复执行一次，也就是两次，默认为 0，不重复执行。</li>
+<li>android:repeatMode<br>重复模式：int 型，当一个动画执行完的时候应该如何处理。该值必须是正数或者是 -1，<br>“reverse”<br>会使得按照动画向相反的方向执行，可实现类似钟摆效果。<br>“repeat”<br>会使得动画每次都从头开始循环。</li>
+<li>android:valueType<br>关键参数，如果该 value 是一个颜色，那么就不需要指定，因为动画框架会自动的处理颜色值。有 intType 和 floatType 两种：分别说明动画值为 int 和 float 型。</li>
+</ul>
+<p>animator</p>
+<p>在一个特定的时间里执行一个动画。相对应的是 ValueAnimator.所有的属性和一样 android:valueTo<br>android:valueFrom<br>android:duration<br>android:startOffset<br>android:repeatCount<br>android:repeatMode<br>android:valueType<br>Value Description<br>floatType (default)</p>
+<p>为了执行该动画，必须在代码中将该动画资源文件填充为一个 AnimationSet 对象，然后在执行动画前，为目标对象设置所有的动画集合。<br>简便的方法就是通过 setTarget 方法为目标对象设置动画集合，代码如下：<br><figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">AnimatorSet <span class="keyword">set</span> = (AnimatorSet) AnimatorInflater.loadAnimator(myContext,  </span><br><span class="line">   R.anim.property_animator);  </span><br><span class="line"><span class="keyword">set</span>.setTarget(myObject);  </span><br><span class="line"><span class="keyword">set</span>.start();</span><br></pre></td></tr></table></figure></p>
+<p>参考链接：<a href="http://b.codekk.com/blogs/detail/559623d8d6459ae793499787" target="_blank" rel="noopener">http://b.codekk.com/blogs/detail/559623d8d6459ae793499787</a></p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Android/">Android</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/05/20/Android DeepLink/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Android DeepLink</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/04/28/Linu系统变量修改/">
+        <span class="next-text nav-default">Android 反编译纪录</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+
+  </body>
+</html>

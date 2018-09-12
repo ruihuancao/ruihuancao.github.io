@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Android View绘制"/>
+
+
+
+
+  <meta name="keywords" content="View, 散落的蒲公英" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="散落的蒲公英">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
+
+
+
+<link rel="canonical" href="https://ruihuancao.github.io/2015/10/18/Android View绘制/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"散落的蒲公英","subtitle":"万物之中，希望至美；至美之物，永不凋零","description":"我们就这样一起到老吧","author":"曹瑞环","language":"zh-CN","timezone":null,"url":"https://ruihuancao.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":true,"line_number":false,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":15,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:ruihuancao/ruihuancao.github.io.git","branch":"master"},"ignore":[],"avatar":"/images/avatar.png","favicon":"/favicon.ico","archive_generator":{"per_page":20,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":20},"tag_generator":{"per_page":20},"index_generator":{"per_page":20,"order_by":"-date"},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"rss":"default","menu":{"Home":"/","Archives":"/archives/","Categories":"/categories/","Tags":"/tags"},"color":"default","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"ruihuancao@email.com","github":"https://github.com/ruihuancao"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
+
+    <title> Android View绘制 - 散落的蒲公英 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">散落的蒲公英</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">散落的蒲公英</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Android View绘制
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2015-10-18
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/开发/">开发</a>
+            
+              <a href="/categories/开发/Android/">Android</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前置"><span class="toc-text">前置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#View绘制"><span class="toc-text">View绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义View实现"><span class="toc-text">自定义View实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测量"><span class="toc-text">测量</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>要了解自定义View首先要搞清楚，AndroidView的体系,这个很重要,大局观，理清条例。UI中最常用的就2个：控件和布局。所有的控件直接或间接继承自View。布局则继承自ViewGroup，Viewgroup继承自View。到最后只要关注这两个类View和ViewGroup的实现就可以。其他的控件，布局都是对父类扩展。我们关注2个问题，View的事件和View的绘制。<br><a id="more"></a></p>
+<h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><p>Activity通常被认为是一个页面，从Activity到View，从源码可以看到：Activity-&gt;PhoneWindow-&gt;DecorView<br>DecorView就是我们看到的整个界面的父容器,继承自FrameLayout.</p>
+<h2 id="View绘制"><a href="#View绘制" class="headerlink" title="View绘制"></a>View绘制</h2><p>View绘制流程：measure -&gt;layout-&gt;draw<br>方法：onMeasure -&gt;onLayout-&gt;onDraw<br>源码在ViewRootImpl的performTraversals中</p>
+<h3 id="自定义View实现"><a href="#自定义View实现" class="headerlink" title="自定义View实现"></a>自定义View实现</h3><p>首先按照常用创建自定义View的方法，即：继承View类，大致如下：<br><figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CustomView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">Paint</span> paint ;</span><br><span class="line">    float size ;</span><br><span class="line">    public <span class="type">CustomView</span>(<span class="type">Context</span> context) &#123;</span><br><span class="line">        <span class="keyword">this</span>(context, <span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="type">CustomView</span>(<span class="type">Context</span> context, <span class="type">AttributeSet</span> attrs) &#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取自定义属性</span></span><br><span class="line">        <span class="type">TypedArray</span> a = context.obtainStyledAttributes(attrs, <span class="type">R</span>.styleable.<span class="type">CustomView</span>);</span><br><span class="line">        size = a.getDimension(<span class="type">R</span>.styleable.<span class="type">CustomView_defaultSize</span>, <span class="number">0</span>);</span><br><span class="line">        a.recycle();</span><br><span class="line"></span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> void init()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="测量"><a href="#测量" class="headerlink" title="测量"></a>测量</h3><p>View类中的onMeasure()<br><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> onMeasure(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec) &#123;</span><br><span class="line">    setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),</span><br><span class="line">            getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 有背景，获取最小高度，没有背景，取背景和最小高度的最大值</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">int</span> getSuggestedMinimumHeight() &#123;</span><br><span class="line">    <span class="keyword">return</span> (mBackground == <span class="literal">null</span>) ? mMinHeight : max(mMinHeight, mBackground.getMinimumHeight());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">int</span> getSuggestedMinimumWidth() &#123;</span><br><span class="line">    <span class="keyword">return</span> (mBackground == <span class="literal">null</span>) ? mMinWidth : max(mMinWidth, mBackground.getMinimumWidth());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// size 默认大小，measureSpec 测量单位</span></span><br><span class="line"><span class="comment">// 测量模式是一个32位值，前两位测量模式，后30位测量大小</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> getDefaultSize(<span class="keyword">int</span> size, <span class="keyword">int</span> measureSpec) &#123;</span><br><span class="line">        <span class="keyword">int</span> result = size;</span><br><span class="line">        <span class="comment">// measureSpec 来自于父容器</span></span><br><span class="line">        <span class="comment">// 获取测量模式</span></span><br><span class="line">        <span class="keyword">int</span> specMode = MeasureSpec.getMode(measureSpec);</span><br><span class="line">        <span class="comment">// 获取测量大小</span></span><br><span class="line">        <span class="keyword">int</span> specSize = MeasureSpec.getSize(measureSpec);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (specMode) &#123;</span><br><span class="line">        <span class="keyword">case</span> MeasureSpec.<span class="string">UNSPECIFIED:</span></span><br><span class="line">            result = size;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> MeasureSpec.<span class="string">AT_MOST:</span></span><br><span class="line">        <span class="keyword">case</span> MeasureSpec.<span class="string">EXACTLY:</span></span><br><span class="line">            result = specSize;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>MeasureSpec在的产生在父容器中,默认实现，查看ViewGroup<br><figure class="highlight processing"><table><tr><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> measureChildWithMargins(View child,</span><br><span class="line">            <span class="built_in">int</span> parentWidthMeasureSpec, <span class="built_in">int</span> widthUsed,</span><br><span class="line">            <span class="built_in">int</span> parentHeightMeasureSpec, <span class="built_in">int</span> heightUsed) &#123;</span><br><span class="line">        <span class="keyword">final</span> MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">int</span> childWidthMeasureSpec = getChildMeasureSpec(parentWidthMeasureSpec,</span><br><span class="line">                mPaddingLeft + mPaddingRight + lp.leftMargin + lp.rightMargin</span><br><span class="line">                        + widthUsed, lp.<span class="built_in">width</span>);</span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">int</span> childHeightMeasureSpec = getChildMeasureSpec(parentHeightMeasureSpec,</span><br><span class="line">                mPaddingTop + mPaddingBottom + lp.topMargin + lp.bottomMargin</span><br><span class="line">                        + heightUsed, lp.<span class="built_in">height</span>);</span><br><span class="line"></span><br><span class="line">        child.measure(childWidthMeasureSpec, childHeightMeasureSpec);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> getChildMeasureSpec(<span class="built_in">int</span> spec, <span class="built_in">int</span> padding, <span class="built_in">int</span> childDimension) &#123;</span><br><span class="line">            <span class="built_in">int</span> specMode = MeasureSpec.getMode(spec);</span><br><span class="line">            <span class="built_in">int</span> specSize = MeasureSpec.getSize(spec);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">int</span> <span class="built_in">size</span> = Math.<span class="built_in">max</span>(<span class="number">0</span>, specSize - padding);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">int</span> resultSize = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">int</span> resultMode = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">switch</span> (specMode) &#123;</span><br><span class="line">            <span class="comment">// Parent has imposed an exact size on us</span></span><br><span class="line">            <span class="keyword">case</span> MeasureSpec.EXACTLY:</span><br><span class="line">                <span class="keyword">if</span> (childDimension &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    resultSize = childDimension;</span><br><span class="line">                    resultMode = MeasureSpec.EXACTLY;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (childDimension == LayoutParams.MATCH_PARENT) &#123;</span><br><span class="line">                    <span class="comment">// Child wants to be our size. So be it.</span></span><br><span class="line">                    resultSize = <span class="built_in">size</span>;</span><br><span class="line">                    resultMode = MeasureSpec.EXACTLY;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (childDimension == LayoutParams.WRAP_CONTENT) &#123;</span><br><span class="line">                    <span class="comment">// Child wants to determine its own size. It can't be</span></span><br><span class="line">                    <span class="comment">// bigger than us.</span></span><br><span class="line">                    resultSize = <span class="built_in">size</span>;</span><br><span class="line">                    resultMode = MeasureSpec.AT_MOST;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Parent has imposed a maximum size on us</span></span><br><span class="line">            <span class="keyword">case</span> MeasureSpec.AT_MOST:</span><br><span class="line">                <span class="keyword">if</span> (childDimension &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="comment">// Child wants a specific size... so be it</span></span><br><span class="line">                    resultSize = childDimension;</span><br><span class="line">                    resultMode = MeasureSpec.EXACTLY;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (childDimension == LayoutParams.MATCH_PARENT) &#123;</span><br><span class="line">                    <span class="comment">// Child wants to be our size, but our size is not fixed.</span></span><br><span class="line">                    <span class="comment">// Constrain child to not be bigger than us.</span></span><br><span class="line">                    resultSize = <span class="built_in">size</span>;</span><br><span class="line">                    resultMode = MeasureSpec.AT_MOST;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (childDimension == LayoutParams.WRAP_CONTENT) &#123;</span><br><span class="line">                    <span class="comment">// Child wants to determine its own size. It can't be</span></span><br><span class="line">                    <span class="comment">// bigger than us.</span></span><br><span class="line">                    resultSize = <span class="built_in">size</span>;</span><br><span class="line">                    resultMode = MeasureSpec.AT_MOST;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Parent asked to see how big we want to be</span></span><br><span class="line">            <span class="keyword">case</span> MeasureSpec.UNSPECIFIED:</span><br><span class="line">                <span class="keyword">if</span> (childDimension &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="comment">// Child wants a specific size... let him have it</span></span><br><span class="line">                    resultSize = childDimension;</span><br><span class="line">                    resultMode = MeasureSpec.EXACTLY;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (childDimension == LayoutParams.MATCH_PARENT) &#123;</span><br><span class="line">                    <span class="comment">// Child wants to be our size... find out how big it should</span></span><br><span class="line">                    <span class="comment">// be</span></span><br><span class="line">                    resultSize = View.sUseZeroUnspecifiedMeasureSpec ? <span class="number">0</span> : <span class="built_in">size</span>;</span><br><span class="line">                    resultMode = MeasureSpec.UNSPECIFIED;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (childDimension == LayoutParams.WRAP_CONTENT) &#123;</span><br><span class="line">                    <span class="comment">// Child wants to determine its own size.... find out how</span></span><br><span class="line">                    <span class="comment">// big it should be</span></span><br><span class="line">                    resultSize = View.sUseZeroUnspecifiedMeasureSpec ? <span class="number">0</span> : <span class="built_in">size</span>;</span><br><span class="line">                    resultMode = MeasureSpec.UNSPECIFIED;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//noinspection ResourceType</span></span><br><span class="line">            <span class="keyword">return</span> MeasureSpec.makeMeasureSpec(resultSize, resultMode);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看出，View测量的大小取决与父容器的测量模式和自身的布局参数。View测量本身大小, 直接完成。ViewGroup则需要遍历去调用所有 child 的measure 方法，各个 child 再递归去执行这个流程</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/View/">View</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2015/10/18/css基础教程/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">(转)css基础教程</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/10/18/Android事件机制/">
+        <span class="next-text nav-default">Android事件机制</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+
+  </body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="数据加密RSA"/>
+
+
+
+
+  <meta name="keywords" content="RSA, 散落的蒲公英" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="散落的蒲公英">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
+
+
+
+<link rel="canonical" href="https://ruihuancao.github.io/2016/03/17/数据加密－RSA/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"散落的蒲公英","subtitle":"万物之中，希望至美；至美之物，永不凋零","description":"我们就这样一起到老吧","author":"曹瑞环","language":"zh-CN","timezone":null,"url":"https://ruihuancao.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":true,"line_number":false,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":15,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:ruihuancao/ruihuancao.github.io.git","branch":"master"},"ignore":[],"avatar":"/images/avatar.png","favicon":"/favicon.ico","archive_generator":{"per_page":20,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":20},"tag_generator":{"per_page":20},"index_generator":{"per_page":20,"order_by":"-date"},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"rss":"default","menu":{"Home":"/","Archives":"/archives/","Categories":"/categories/","Tags":"/tags"},"color":"default","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"ruihuancao@email.com","github":"https://github.com/ruihuancao"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
+
+    <title> 数据加密RSA - 散落的蒲公英 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">散落的蒲公英</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">散落的蒲公英</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          数据加密RSA
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-03-17
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/开发/">开发</a>
+            
+              <a href="/categories/开发/Android/">Android</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是RSA"><span class="toc-text">什么是RSA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA-使用"><span class="toc-text">RSA 使用</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>RSA加密</p>
+<h2 id="什么是RSA"><a href="#什么是RSA" class="headerlink" title="什么是RSA"></a>什么是RSA</h2><p>RSA加密算法是一种非对称加密算法。在公开密钥加密和电子商业中RSA被广泛使用。<br><a id="more"></a></p>
+<h2 id="RSA-使用"><a href="#RSA-使用" class="headerlink" title="RSA 使用"></a>RSA 使用</h2><figure class="highlight processing"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> class RSA &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> RSA = <span class="string">"RSA"</span>;<span class="comment">// 非对称加密密钥算法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> ECB_PKCS1_PADDING = <span class="string">"RSA/ECB/PKCS1Padding"</span>;<span class="comment">//加密填充方式</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> DEFAULT_KEY_SIZE = <span class="number">2048</span>;<span class="comment">//秘钥默认长度</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">byte</span>[] DEFAULT_SPLIT = <span class="string">"#PART#"</span>.getBytes();    <span class="comment">// 当要加密的内容超过bufferSize，则采用partSplit进行分块加密</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> DEFAULT_BUFFERSIZE = (DEFAULT_KEY_SIZE / <span class="number">8</span>) - <span class="number">11</span>;<span class="comment">// 当前秘钥支持加密的最大字节数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">        <span class="comment">// 要加密数据</span></span><br><span class="line">        <span class="keyword">String</span> data = <span class="string">"西湖，位于浙江省杭州市西面，是中国大陆首批国家重点风景名胜区和中国十大风景名胜之一。它是中国大陆主要的观赏性淡水湖泊之一，也是现今《世界遗产名录》中少数几个和中国唯一一个湖泊类文化遗产。\n"</span> +</span><br><span class="line">                <span class="string">"西湖三面环山，面积约6.39平方千米，东西宽约2.8千米，南北长约3.2千米，绕湖一周近15千米。湖中被孤山、白堤、苏堤、杨公堤分隔，按面积大小分别为外西湖、西里湖、北里湖、小南湖及岳湖等五片水面，苏堤、白堤越过湖面，小瀛洲、湖心亭、阮公墩三个小岛鼎立于外西湖湖心，夕照山的雷峰塔与宝石山的保俶塔隔湖相映，由此形成了“一山、二塔、三岛、三堤、五湖”的基本格局。"</span>;</span><br><span class="line">        <span class="comment">// 获取秘钥</span></span><br><span class="line">        KeyPair keyPair = generateRSAKeyPair(DEFAULT_KEY_SIZE);</span><br><span class="line">        <span class="comment">// 公钥</span></span><br><span class="line">        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();</span><br><span class="line">        <span class="comment">// 私钥</span></span><br><span class="line">        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">byte</span>[]  encryptByte = encryptByPublicKeyForSpilt(data.getBytes(), publicKey.getEncoded());</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"-----------------------------------------------------"</span>);</span><br><span class="line">        <span class="keyword">String</span> encryptStr = <span class="keyword">new</span> <span class="keyword">String</span>(encryptByte);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"公钥加密后的数据:"</span>+ encryptStr);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"-----------------------------------------------------"</span>);</span><br><span class="line">        <span class="built_in">byte</span>[] decryptByte = decryptByPrivateKeyForSpilt(encryptByte, privateKey.getEncoded());</span><br><span class="line">        <span class="keyword">String</span> decryptStr = <span class="keyword">new</span> <span class="keyword">String</span>(decryptByte);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"私钥解密后的数据:"</span>+ decryptStr);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"-----------------------------------------------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">byte</span>[]  encryptByPrivate  = encryptByPrivateKeyForSpilt(data.getBytes(), privateKey.getEncoded());</span><br><span class="line">        <span class="keyword">String</span> encryptPrivateStr = <span class="keyword">new</span> <span class="keyword">String</span>(encryptByPrivate);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"私钥加密后的数据:"</span>+ encryptPrivateStr);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"-----------------------------------------------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">byte</span>[]  decryptByPublic  = decryptByPublicKeyForSpilt(encryptByPrivate, publicKey.getEncoded());</span><br><span class="line">        <span class="keyword">String</span> decryptByPublicStr = <span class="keyword">new</span> <span class="keyword">String</span>(decryptByPublic);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"公钥解密后的数据:"</span>+ decryptByPublicStr);</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">"-----------------------------------------------------"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成秘钥</span></span><br><span class="line"><span class="comment">     * @param keyLength</span></span><br><span class="line"><span class="comment">     * @return</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> KeyPair generateRSAKeyPair(<span class="built_in">int</span> keyLength) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            KeyPairGenerator kpg = KeyPairGenerator.getInstance(RSA);</span><br><span class="line">            kpg.initialize(keyLength);</span><br><span class="line">            <span class="keyword">return</span> kpg.genKeyPair();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用公钥对字符串进行加密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param data 原文</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] encryptByPublicKey(<span class="built_in">byte</span>[] data, <span class="built_in">byte</span>[] publicKey) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 得到公钥</span></span><br><span class="line">        X509EncodedKeySpec keySpec = <span class="keyword">new</span> X509EncodedKeySpec(publicKey);</span><br><span class="line">        KeyFactory kf = KeyFactory.getInstance(RSA);</span><br><span class="line">        PublicKey keyPublic = kf.generatePublic(keySpec);</span><br><span class="line">        <span class="comment">// 加密数据</span></span><br><span class="line">        Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);</span><br><span class="line">        cp.init(Cipher.ENCRYPT_MODE, keyPublic);</span><br><span class="line">        <span class="keyword">return</span> cp.doFinal(data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私钥加密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param data       待加密数据</span></span><br><span class="line"><span class="comment">     * @param privateKey 密钥</span></span><br><span class="line"><span class="comment">     * @return byte[] 加密数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] encryptByPrivateKey(<span class="built_in">byte</span>[] data, <span class="built_in">byte</span>[] privateKey) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 得到私钥</span></span><br><span class="line">        PKCS8EncodedKeySpec keySpec = <span class="keyword">new</span> PKCS8EncodedKeySpec(privateKey);</span><br><span class="line">        KeyFactory kf = KeyFactory.getInstance(RSA);</span><br><span class="line">        PrivateKey keyPrivate = kf.generatePrivate(keySpec);</span><br><span class="line">        <span class="comment">// 数据加密</span></span><br><span class="line">        Cipher cipher = Cipher.getInstance(ECB_PKCS1_PADDING);</span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE, keyPrivate);</span><br><span class="line">        <span class="keyword">return</span> cipher.doFinal(data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 公钥解密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param data      待解密数据</span></span><br><span class="line"><span class="comment">     * @param publicKey 密钥</span></span><br><span class="line"><span class="comment">     * @return byte[] 解密数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] decryptByPublicKey(<span class="built_in">byte</span>[] data, <span class="built_in">byte</span>[] publicKey) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 得到公钥</span></span><br><span class="line">        X509EncodedKeySpec keySpec = <span class="keyword">new</span> X509EncodedKeySpec(publicKey);</span><br><span class="line">        KeyFactory kf = KeyFactory.getInstance(RSA);</span><br><span class="line">        PublicKey keyPublic = kf.generatePublic(keySpec);</span><br><span class="line">        <span class="comment">// 数据解密</span></span><br><span class="line">        Cipher cipher = Cipher.getInstance(ECB_PKCS1_PADDING);</span><br><span class="line">        cipher.init(Cipher.DECRYPT_MODE, keyPublic);</span><br><span class="line">        <span class="keyword">return</span> cipher.doFinal(data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用私钥进行解密</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] decryptByPrivateKey(<span class="built_in">byte</span>[] encrypted, <span class="built_in">byte</span>[] privateKey) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 得到私钥</span></span><br><span class="line">        PKCS8EncodedKeySpec keySpec = <span class="keyword">new</span> PKCS8EncodedKeySpec(privateKey);</span><br><span class="line">        KeyFactory kf = KeyFactory.getInstance(RSA);</span><br><span class="line">        PrivateKey keyPrivate = kf.generatePrivate(keySpec);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解密数据</span></span><br><span class="line">        Cipher cp = Cipher.getInstance(ECB_PKCS1_PADDING);</span><br><span class="line">        cp.init(Cipher.DECRYPT_MODE, keyPrivate);</span><br><span class="line">        <span class="built_in">byte</span>[] arr = cp.doFinal(encrypted);</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用公钥对字符串进行分段加密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] encryptByPublicKeyForSpilt(<span class="built_in">byte</span>[] data, <span class="built_in">byte</span>[] publicKey) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="built_in">int</span> dataLen = data.length;</span><br><span class="line">        <span class="keyword">if</span> (dataLen &lt;= DEFAULT_BUFFERSIZE) &#123;</span><br><span class="line">            <span class="keyword">return</span> encryptByPublicKey(data, publicKey);</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Byte&gt; allBytes = <span class="keyword">new</span> ArrayList&lt;Byte&gt;(<span class="number">2048</span>);</span><br><span class="line">        <span class="built_in">int</span> bufIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span> subDataLoop = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">byte</span>[] buf = <span class="keyword">new</span> <span class="built_in">byte</span>[DEFAULT_BUFFERSIZE];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; dataLen; i++) &#123;</span><br><span class="line">            buf[bufIndex] = data[i];</span><br><span class="line">            <span class="keyword">if</span> (++bufIndex == DEFAULT_BUFFERSIZE || i == dataLen - <span class="number">1</span>) &#123;</span><br><span class="line">                subDataLoop++;</span><br><span class="line">                <span class="keyword">if</span> (subDataLoop != <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="built_in">byte</span> b : DEFAULT_SPLIT) &#123;</span><br><span class="line">                        allBytes.<span class="built_in">add</span>(b);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">byte</span>[] encryptBytes = encryptByPublicKey(buf, publicKey);</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">byte</span> b : encryptBytes) &#123;</span><br><span class="line">                    allBytes.<span class="built_in">add</span>(b);</span><br><span class="line">                &#125;</span><br><span class="line">                bufIndex = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span> (i == dataLen - <span class="number">1</span>) &#123;</span><br><span class="line">                    buf = <span class="keyword">null</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    buf = <span class="keyword">new</span> <span class="built_in">byte</span>[Math.<span class="built_in">min</span>(DEFAULT_BUFFERSIZE, dataLen - i - <span class="number">1</span>)];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">byte</span>[] bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[allBytes.<span class="built_in">size</span>()];</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (Byte b : allBytes) &#123;</span><br><span class="line">                bytes[i++] = b.byteValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bytes;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 分段加密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param data       要加密的原始数据</span></span><br><span class="line"><span class="comment">     * @param privateKey 秘钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] encryptByPrivateKeyForSpilt(<span class="built_in">byte</span>[] data, <span class="built_in">byte</span>[] privateKey) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="built_in">int</span> dataLen = data.length;</span><br><span class="line">        <span class="keyword">if</span> (dataLen &lt;= DEFAULT_BUFFERSIZE) &#123;</span><br><span class="line">            <span class="keyword">return</span> encryptByPrivateKey(data, privateKey);</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Byte&gt; allBytes = <span class="keyword">new</span> ArrayList&lt;Byte&gt;(<span class="number">2048</span>);</span><br><span class="line">        <span class="built_in">int</span> bufIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span> subDataLoop = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">byte</span>[] buf = <span class="keyword">new</span> <span class="built_in">byte</span>[DEFAULT_BUFFERSIZE];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; dataLen; i++) &#123;</span><br><span class="line">            buf[bufIndex] = data[i];</span><br><span class="line">            <span class="keyword">if</span> (++bufIndex == DEFAULT_BUFFERSIZE || i == dataLen - <span class="number">1</span>) &#123;</span><br><span class="line">                subDataLoop++;</span><br><span class="line">                <span class="keyword">if</span> (subDataLoop != <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="built_in">byte</span> b : DEFAULT_SPLIT) &#123;</span><br><span class="line">                        allBytes.<span class="built_in">add</span>(b);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">byte</span>[] encryptBytes = encryptByPrivateKey(buf, privateKey);</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">byte</span> b : encryptBytes) &#123;</span><br><span class="line">                    allBytes.<span class="built_in">add</span>(b);</span><br><span class="line">                &#125;</span><br><span class="line">                bufIndex = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span> (i == dataLen - <span class="number">1</span>) &#123;</span><br><span class="line">                    buf = <span class="keyword">null</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    buf = <span class="keyword">new</span> <span class="built_in">byte</span>[Math.<span class="built_in">min</span>(DEFAULT_BUFFERSIZE, dataLen - i - <span class="number">1</span>)];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">byte</span>[] bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[allBytes.<span class="built_in">size</span>()];</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (Byte b : allBytes) &#123;</span><br><span class="line">                bytes[i++] = b.byteValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bytes;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 公钥分段解密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param encrypted 待解密数据</span></span><br><span class="line"><span class="comment">     * @param publicKey 密钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] decryptByPublicKeyForSpilt(<span class="built_in">byte</span>[] encrypted, <span class="built_in">byte</span>[] publicKey) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="built_in">int</span> splitLen = DEFAULT_SPLIT.length;</span><br><span class="line">        <span class="keyword">if</span> (splitLen &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> decryptByPublicKey(encrypted, publicKey);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">int</span> dataLen = encrypted.length;</span><br><span class="line">        List&lt;Byte&gt; allBytes = <span class="keyword">new</span> ArrayList&lt;Byte&gt;(<span class="number">1024</span>);</span><br><span class="line">        <span class="built_in">int</span> latestStartIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; dataLen; i++) &#123;</span><br><span class="line">            <span class="built_in">byte</span> bt = encrypted[i];</span><br><span class="line">            <span class="built_in">boolean</span> isMatchSplit = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (i == dataLen - <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 到data的最后了</span></span><br><span class="line">                <span class="built_in">byte</span>[] part = <span class="keyword">new</span> <span class="built_in">byte</span>[dataLen - latestStartIndex];</span><br><span class="line">                System.arraycopy(encrypted, latestStartIndex, part, <span class="number">0</span>, part.length);</span><br><span class="line">                <span class="built_in">byte</span>[] decryptPart = decryptByPublicKey(part, publicKey);</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">byte</span> b : decryptPart) &#123;</span><br><span class="line">                    allBytes.<span class="built_in">add</span>(b);</span><br><span class="line">                &#125;</span><br><span class="line">                latestStartIndex = i + splitLen;</span><br><span class="line">                i = latestStartIndex - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (bt == DEFAULT_SPLIT[<span class="number">0</span>]) &#123;</span><br><span class="line">                <span class="comment">// 这个是以split[0]开头</span></span><br><span class="line">                <span class="keyword">if</span> (splitLen &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (i + splitLen &lt; dataLen) &#123;</span><br><span class="line">                        <span class="comment">// 没有超出data的范围</span></span><br><span class="line">                        <span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">1</span>; j &lt; splitLen; j++) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (DEFAULT_SPLIT[j] != encrypted[i + j]) &#123;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="keyword">if</span> (j == splitLen - <span class="number">1</span>) &#123;</span><br><span class="line">                                <span class="comment">// 验证到split的最后一位，都没有break，则表明已经确认是split段</span></span><br><span class="line">                                isMatchSplit = <span class="keyword">true</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// split只有一位，则已经匹配了</span></span><br><span class="line">                    isMatchSplit = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (isMatchSplit) &#123;</span><br><span class="line">                <span class="built_in">byte</span>[] part = <span class="keyword">new</span> <span class="built_in">byte</span>[i - latestStartIndex];</span><br><span class="line">                System.arraycopy(encrypted, latestStartIndex, part, <span class="number">0</span>, part.length);</span><br><span class="line">                <span class="built_in">byte</span>[] decryptPart = decryptByPublicKey(part, publicKey);</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">byte</span> b : decryptPart) &#123;</span><br><span class="line">                    allBytes.<span class="built_in">add</span>(b);</span><br><span class="line">                &#125;</span><br><span class="line">                latestStartIndex = i + splitLen;</span><br><span class="line">                i = latestStartIndex - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">byte</span>[] bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[allBytes.<span class="built_in">size</span>()];</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (Byte b : allBytes) &#123;</span><br><span class="line">                bytes[i++] = b.byteValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bytes;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用私钥分段解密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] decryptByPrivateKeyForSpilt(<span class="built_in">byte</span>[] encrypted, <span class="built_in">byte</span>[] privateKey) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="built_in">int</span> splitLen = DEFAULT_SPLIT.length;</span><br><span class="line">        <span class="keyword">if</span> (splitLen &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> decryptByPrivateKey(encrypted, privateKey);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">int</span> dataLen = encrypted.length;</span><br><span class="line">        List&lt;Byte&gt; allBytes = <span class="keyword">new</span> ArrayList&lt;Byte&gt;(<span class="number">1024</span>);</span><br><span class="line">        <span class="built_in">int</span> latestStartIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; dataLen; i++) &#123;</span><br><span class="line">            <span class="built_in">byte</span> bt = encrypted[i];</span><br><span class="line">            <span class="built_in">boolean</span> isMatchSplit = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (i == dataLen - <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 到data的最后了</span></span><br><span class="line">                <span class="built_in">byte</span>[] part = <span class="keyword">new</span> <span class="built_in">byte</span>[dataLen - latestStartIndex];</span><br><span class="line">                System.arraycopy(encrypted, latestStartIndex, part, <span class="number">0</span>, part.length);</span><br><span class="line">                <span class="built_in">byte</span>[] decryptPart = decryptByPrivateKey(part, privateKey);</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">byte</span> b : decryptPart) &#123;</span><br><span class="line">                    allBytes.<span class="built_in">add</span>(b);</span><br><span class="line">                &#125;</span><br><span class="line">                latestStartIndex = i + splitLen;</span><br><span class="line">                i = latestStartIndex - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (bt == DEFAULT_SPLIT[<span class="number">0</span>]) &#123;</span><br><span class="line">                <span class="comment">// 这个是以split[0]开头</span></span><br><span class="line">                <span class="keyword">if</span> (splitLen &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (i + splitLen &lt; dataLen) &#123;</span><br><span class="line">                        <span class="comment">// 没有超出data的范围</span></span><br><span class="line">                        <span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">1</span>; j &lt; splitLen; j++) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (DEFAULT_SPLIT[j] != encrypted[i + j]) &#123;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="keyword">if</span> (j == splitLen - <span class="number">1</span>) &#123;</span><br><span class="line">                                <span class="comment">// 验证到split的最后一位，都没有break，则表明已经确认是split段</span></span><br><span class="line">                                isMatchSplit = <span class="keyword">true</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// split只有一位，则已经匹配了</span></span><br><span class="line">                    isMatchSplit = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (isMatchSplit) &#123;</span><br><span class="line">                <span class="built_in">byte</span>[] part = <span class="keyword">new</span> <span class="built_in">byte</span>[i - latestStartIndex];</span><br><span class="line">                System.arraycopy(encrypted, latestStartIndex, part, <span class="number">0</span>, part.length);</span><br><span class="line">                <span class="built_in">byte</span>[] decryptPart = decryptByPrivateKey(part, privateKey);</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">byte</span> b : decryptPart) &#123;</span><br><span class="line">                    allBytes.<span class="built_in">add</span>(b);</span><br><span class="line">                &#125;</span><br><span class="line">                latestStartIndex = i + splitLen;</span><br><span class="line">                i = latestStartIndex - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">byte</span>[] bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[allBytes.<span class="built_in">size</span>()];</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (Byte b : allBytes) &#123;</span><br><span class="line">                bytes[i++] = b.byteValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bytes;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>加密填充方式：android系统的RSA实现是”RSA/None/NoPadding”，标准JDK实现是”RSA/None/PKCS1Padding”<br>实现分段加密：待加密的字节数不能超过密钥的长度值除以 8 再减去 11（即：KeySize / 8 - 11），而加密后得到密文的字节数，正好是密钥的长度值除以 8（即：KeySize / 8）。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/RSA/">RSA</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/03/17/数据加密-AES/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">数据加密AES</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/03/17/数据加密-MD5/">
+        <span class="next-text nav-default">数据加密MD5</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+
+  </body>
+</html>
