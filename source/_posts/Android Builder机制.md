@@ -12,7 +12,7 @@ IPC：Inter-Process Communication，即进程间通信
 
 AIDL：Android Interface Definition Language，即Android接口定义语言。Client和Service要实现
 跨进程通信，必须遵循的接口规范。需要创建.aidl文件，外在表现上和Java中的interface有点类似。
-
+<!-- more -->
 Binder：Android进程间通信是通过Binder来实现的。远程Service在Client绑定服务时，会在onBind()的回调中返回一个Binder，当Client调用bindService()与远程Service建立连接成功时，会拿到远程Binder实例，从而使用远程Service提供的服务
 
 Linux系统进程间通信方式：
