@@ -17,10 +17,12 @@
 
 
 
-  <meta name="description" content="我们就这样一起到老吧"/>
+  <meta name="description" content="跨平台框架"/>
 
 
 
+
+  <meta name="keywords" content="跨平台, 散落的蒲公英" />
 
 
 
@@ -40,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://ruihuancao.github.io/archives/2016/05/"/>
+<link rel="canonical" href="https://ruihuancao.github.io/2018/05/13/跨平台框架/"/>
 
 
 
@@ -87,11 +89,7 @@
   window.config = {"title":"散落的蒲公英","subtitle":"万物之中，希望至美；至美之物，永不凋零","description":"我们就这样一起到老吧","author":"曹瑞环","language":"zh-CN","timezone":null,"url":"https://ruihuancao.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":true,"line_number":false,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":15,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:ruihuancao/ruihuancao.github.io.git","branch":"master"},"ignore":[],"avatar":"/images/avatar.png","favicon":"/favicon.ico","category_generator":{"per_page":20},"archive_generator":{"per_page":20,"yearly":true,"monthly":true,"daily":false},"index_generator":{"per_page":20,"order_by":"-date"},"tag_generator":{"per_page":20},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"rss":"default","menu":{"Home":"/","Archives":"/archives/","Categories":"/categories/","Tags":"/tags"},"color":"cobalt blue","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"ruihuancao@email.com","github":"https://github.com/ruihuancao"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
 </script>
 
-    <title>
-  
-    归档 - 散落的蒲公英
-  
-</title>
+    <title> 跨平台框架 - 散落的蒲公英 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -203,59 +201,101 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          跨平台框架
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 38 篇日志
+      <div class="post-meta">
+        <span class="post-time">
+          2018-05-13
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/框架/">框架</a>
+            
           </span>
-        </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#跨平台发展"><span class="toc-text">跨平台发展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Webview"><span class="toc-text">Webview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bridge方式"><span class="toc-text">Bridge方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flutter"><span class="toc-text">Flutter</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h1 id="跨平台发展"><a href="#跨平台发展" class="headerlink" title="跨平台发展"></a>跨平台发展</h1><p>移动互联网发展到现在，越来越多的跨平台框架出现，表现也越来越出色，未来在哪里不知道，但或许可以看看其发展历史。</p>
+<h2 id="Webview"><a href="#Webview" class="headerlink" title="Webview"></a>Webview</h2><p>基于Webview的跨平台实现，PhoneGap，Apache Cordova等这些出名的框架，也有各个公司构建的webapp。</p>
+<h2 id="Bridge方式"><a href="#Bridge方式" class="headerlink" title="Bridge方式"></a>Bridge方式</h2><p>以ReactNative为代表的，其实现bridage方式连接客户端，表现比webview实现优秀的多，和原生相比，还有不小差距。</p>
+<h2 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h2><p>Flutter使用Dart自身的图形引擎，直接绘制UI在客户端，这种方式更加直接，效率也更高。 其效果和原生几乎分辨不出来，Flutter目前支持Android和Ios,从源码来看，未来可能会支持window,macos。作为Google新的操作系统的客户端开发框架Flutter前途可以说一片光明，目前处在高速发展中，非常值的现在学习。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
       
     
 
     
-      
+      <footer class="post-footer">
         
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2016</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/跨平台/">跨平台</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-03
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/05/03/ReactNative开发/" class="archive-post-link">
-            ReactNative开发
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-  </section>
-
-  
-  <nav class="pagination">
+      <a class="prev" href="/2018/09/13/Dart基础教程/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Dart基础教程</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
+    
+      <a class="next" href="/2017/01/18/Android Crash分析/">
+        <span class="next-text nav-default">Android Crash分析</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -271,6 +311,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
