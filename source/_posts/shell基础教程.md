@@ -2,12 +2,10 @@
 title: (转)shell基础教程
 date: 2015-01-20 14:08:59
 categories:
-- 开发
 - linux
 tags:
 - shell
 ---
-[原文地址](https://learnxinyminutes.com/docs/zh-cn/bash-cn/)
 shell 脚本编写学习
 
 <!--more-->

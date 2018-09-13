@@ -2,10 +2,9 @@
 title: Android Builder机制
 date: 2017-01-18 12:08:59
 categories:
-- 开发
 - Android
 tags:
-- Builder
+- Android
 ---
 
 IPC：Inter-Process Communication，即进程间通信

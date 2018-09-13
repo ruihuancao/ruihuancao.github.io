@@ -1,8 +1,10 @@
 ---
-title: git基础教程
+title: Git基础教程
 date: 2015-08-16 11:40:03
-categories: 开发
-tags: git
+categories: 
+- 工具
+tags: 
+- git
 ---
 
 Git是一个分布式版本控制及源代码管理工具

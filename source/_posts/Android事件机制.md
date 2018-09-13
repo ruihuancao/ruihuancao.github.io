@@ -2,7 +2,6 @@
 title: Android事件机制
 date: 2015-10-18 12:08:59
 categories:
-- 开发
 - Android
 tags:
 - Android

@@ -2,8 +2,7 @@
 title: 数据加密AES
 date: 2016-3-17 00:31:46
 categories:
-- 开发
-- Android
+- 算法
 tags:
 - AES
 ---

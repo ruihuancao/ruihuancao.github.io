@@ -2,7 +2,6 @@
 title: Android自动化构建
 date: 2016-04-15 20:10:13
 categories:
-- 开发
 - Android
 tags:
 - Android

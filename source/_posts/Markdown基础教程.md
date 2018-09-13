@@ -1,13 +1,11 @@
 ---
-title: (转)Markdown基础教程
+title: Markdown基础教程
 date: 2015-08-19 14:28:59
 categories:
-- 开发
 - Markdown
 tags:
 - Markdown
 ---
-[原文地址](https://learnxinyminutes.com/docs/zh-cn/markdown-cn/)
 Markdown基础教程
 
 <!--more-->

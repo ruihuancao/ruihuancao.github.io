@@ -1,13 +1,11 @@
 ---
-title: (转)java基础教程
+title: java基础教程
 date: 2014-08-18 13:18:59
 categories:
-- 开发
 - java
 tags:
 - java
 ---
-[原文地址](https://learnxinyminutes.com/docs/zh-cn/java-cn/)
 java基础教程
 
 <!--more-->

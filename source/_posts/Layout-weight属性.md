@@ -2,7 +2,6 @@
 title: Layout_weight属性
 date: 2014-08-18 09:50:24
 categories:
-- 开发
 - Android
 tags:
 - Android

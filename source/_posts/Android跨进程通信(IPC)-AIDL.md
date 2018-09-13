@@ -2,7 +2,6 @@
 title: Android跨进程通信－AIDL
 date: 2015-04-13 20:31:46
 categories:
-- 开发
 - Android
 tags:
 - IPC

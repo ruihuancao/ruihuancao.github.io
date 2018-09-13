@@ -1,13 +1,11 @@
 ---
-title: (转)Python2教程
+title: Python2教程
 date: 2015-11-18 13:18:59
 categories:
-- 开发
 - Python
 tags:
 - Python
 ---
-[原文地址](https://learnxinyminutes.com/docs/zh-cn/python-cn/)
 Python 2 基础教程
 
 <!--more-->

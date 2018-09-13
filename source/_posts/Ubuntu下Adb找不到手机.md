@@ -2,12 +2,11 @@
 title: Ubuntu下adb找不到手机
 date: 2015-03-13 20:31:46
 categories:
-- 开发
 - Android
 tags:
 - Ubuntu
 ---
-Ubuntu下连接坚果手机，adb找不到，好奇怪，想起源码编译的时候，需要加Usb Access，查了下，果然如此呀
+Ubuntu下连接手机，adb找不到，好奇怪，想起源码编译的时候，需要加Usb Access，查了下，果然如此呀
 
 <!--more-->
 解决办法：

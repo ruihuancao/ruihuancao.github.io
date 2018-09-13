@@ -2,7 +2,6 @@
 title: Flask学习记录
 date: 2016-10-3 20:10:20
 categories:
-- 开发
 - Flask
 tags:
 - Python

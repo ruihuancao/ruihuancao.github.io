@@ -2,7 +2,6 @@
 title: ReactNative开发
 date: 2016-5-3 20:10:20
 categories:
-- 开发
 - ReactNative
 tags:
 - ReactNative

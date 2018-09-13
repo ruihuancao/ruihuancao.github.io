@@ -2,7 +2,6 @@
 title: React开发
 date: 2016-04-12 20:10:13
 categories:
-- 开发
 - React
 tags:
 - React

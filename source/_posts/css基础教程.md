@@ -1,13 +1,11 @@
 ---
-title: (转)css基础教程
+title: css基础教程
 date: 2015-10-18 13:18:59
 categories:
-- 开发
 - css
 tags:
 - css
 ---
-[原文地址](https://learnxinyminutes.com/docs/zh-cn/css-cn/)
 css基础教程
 
 <!--more-->

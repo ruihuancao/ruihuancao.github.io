@@ -2,7 +2,6 @@
 title: Android动画总结
 date: 2015-05-12 20:20:20
 categories:
-- 开发
 - Android
 tags:
 - Android

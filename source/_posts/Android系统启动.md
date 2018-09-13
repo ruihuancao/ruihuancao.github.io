@@ -2,7 +2,6 @@
 title: Android 系统启动
 date: 2017-01-18 12:08:59
 categories:
-- 开发
 - Android
 tags:
 - Builder
