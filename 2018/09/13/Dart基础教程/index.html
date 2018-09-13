@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Dart基础教程"/>
+
+
+
+
+  <meta name="keywords" content="Dart, 散落的蒲公英" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="散落的蒲公英">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
+
+
+
+<link rel="canonical" href="https://ruihuancao.github.io/2018/09/13/Dart基础教程/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"散落的蒲公英","subtitle":"万物之中，希望至美；至美之物，永不凋零","description":"我们就这样一起到老吧","author":"曹瑞环","language":"zh-CN","timezone":null,"url":"https://ruihuancao.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":true,"line_number":false,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":15,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:ruihuancao/ruihuancao.github.io.git","branch":"master"},"ignore":[],"avatar":"/images/avatar.png","favicon":"/favicon.ico","archive_generator":{"per_page":20,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":20},"index_generator":{"per_page":20,"order_by":"-date"},"tag_generator":{"per_page":20},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2015,"rss":"default","menu":{"Home":"/","Archives":"/archives/","Categories":"/categories/","Tags":"/tags"},"color":"cobalt blue","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"ruihuancao@email.com","github":"https://github.com/ruihuancao"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
+
+    <title> Dart基础教程 - 散落的蒲公英 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">散落的蒲公英</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/categories/">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">散落的蒲公英</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Dart基础教程
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-09-13
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Dart/">Dart</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        <p>Dart 是编程语言王国的新人。 它借鉴了许多其他主流语言，并且不会偏离它的兄弟语言 JavaScript 太多。 就像 JavaScript 一样，Dart 的目标是提供良好的浏览器集成。</p>
+<a id="more"></a>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"dart:collection"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"dart:math"</span> <span class="keyword">as</span> DM;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欢迎进入15分钟的 Dart 学习。 http://www.dartlang.org/</span></span><br><span class="line"><span class="comment">// 这是一个可实际执行的向导。你可以用 Dart 运行它</span></span><br><span class="line"><span class="comment">// 或者在线执行! 可以把代码复制/粘贴到这个网站。 http://try.dartlang.org/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数声明和方法声明看起来一样。</span></span><br><span class="line"><span class="comment">// 函数声明可以嵌套。声明使用这种 name() &#123;&#125; 的形式，</span></span><br><span class="line"><span class="comment">// 或者 name() =&gt; 单行表达式; 的形式。</span></span><br><span class="line"><span class="comment">// 右箭头的声明形式会隐式地返回表达式的结果。</span></span><br><span class="line">example1() &#123;</span><br><span class="line">  example1nested1() &#123;</span><br><span class="line">    example1nested2() =&gt; <span class="built_in">print</span>(<span class="string">"Example1 nested 1 nested 2"</span>);</span><br><span class="line">    example1nested2();</span><br><span class="line">  &#125;</span><br><span class="line">  example1nested1();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 匿名函数没有函数名。</span></span><br><span class="line">example2() &#123;</span><br><span class="line">  example2nested1(fn) &#123;</span><br><span class="line">    fn();</span><br><span class="line">  &#125;</span><br><span class="line">  example2nested1(() =&gt; <span class="built_in">print</span>(<span class="string">"Example2 nested 1"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当声明函数类型的参数的时候，声明中可以包含</span></span><br><span class="line"><span class="comment">// 函数参数需要的参数，指定所需的参数名即可。</span></span><br><span class="line">example3() &#123;</span><br><span class="line">  example3nested1(fn(informSomething)) &#123;</span><br><span class="line">    fn(<span class="string">"Example3 nested 1"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  example3planB(fn) &#123; <span class="comment">// 或者不声明函数参数的参数</span></span><br><span class="line">    fn(<span class="string">"Example3 plan B"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  example3nested1((s) =&gt; <span class="built_in">print</span>(s));</span><br><span class="line">  example3planB((s) =&gt; <span class="built_in">print</span>(s));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数有可以访问到外层变量的闭包。</span></span><br><span class="line"><span class="keyword">var</span> example4Something = <span class="string">"Example4 nested 1"</span>;</span><br><span class="line">example4() &#123;</span><br><span class="line">  example4nested1(fn(informSomething)) &#123;</span><br><span class="line">    fn(example4Something);</span><br><span class="line">  &#125;</span><br><span class="line">  example4nested1((s) =&gt; <span class="built_in">print</span>(s));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面这个包含 sayIt 方法的类声明，同样有一个可以访问外层变量的闭包，</span></span><br><span class="line"><span class="comment">// 就像前面的函数一样。</span></span><br><span class="line"><span class="keyword">var</span> example5method = <span class="string">"Example5 sayIt"</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example5Class</span> </span>&#123;</span><br><span class="line">  sayIt() &#123;</span><br><span class="line">    <span class="built_in">print</span>(example5method);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">example5() &#123;</span><br><span class="line">  <span class="comment">// 创建一个 Example5Class 类的匿名实例，</span></span><br><span class="line">  <span class="comment">// 并调用它的 sayIt 方法。</span></span><br><span class="line">  <span class="keyword">new</span> Example5Class().sayIt();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类的声明使用这种形式 class name &#123; [classBody] &#125;.</span></span><br><span class="line"><span class="comment">// classBody 中可以包含实例方法和变量，</span></span><br><span class="line"><span class="comment">// 还可以包含类方法和变量。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example6Class</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> example6InstanceVariable = <span class="string">"Example6 instance variable"</span>; </span><br><span class="line">  sayIt() &#123;</span><br><span class="line">    <span class="built_in">print</span>(example6InstanceVariable);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">example6() &#123;</span><br><span class="line">  <span class="keyword">new</span> Example6Class().sayIt();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类方法和变量使用 static 关键词声明。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example7Class</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">var</span> example7ClassVariable = <span class="string">"Example7 class variable"</span>; </span><br><span class="line">  <span class="keyword">static</span> sayItFromClass() &#123;</span><br><span class="line">    <span class="built_in">print</span>(example7ClassVariable);</span><br><span class="line">  &#125;</span><br><span class="line">  sayItFromInstance() &#123;</span><br><span class="line">    <span class="built_in">print</span>(example7ClassVariable);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">example7() &#123;</span><br><span class="line">  Example7Class.sayItFromClass();</span><br><span class="line">  <span class="keyword">new</span> Example7Class().sayItFromInstance();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字面量非常方便，但是对于在函数/方法的外层的字面量有一个限制，</span></span><br><span class="line"><span class="comment">// 类的外层或外面的字面量必需是常量。</span></span><br><span class="line"><span class="comment">// 字符串和数字默认是常量。</span></span><br><span class="line"><span class="comment">// 但是 array 和 map 不是。他们需要用 "const" 声明为常量。</span></span><br><span class="line"><span class="keyword">var</span> example8A = <span class="keyword">const</span> [<span class="string">"Example8 const array"</span>],</span><br><span class="line">  example8M = <span class="keyword">const</span> &#123;<span class="string">"someKey"</span>: <span class="string">"Example8 const map"</span>&#125;; </span><br><span class="line">example8() &#123;</span><br><span class="line">  <span class="built_in">print</span>(example8A[<span class="number">0</span>]);</span><br><span class="line">  <span class="built_in">print</span>(example8M[<span class="string">"someKey"</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Dart 中的循环使用标准的 for () &#123;&#125; 或 while () &#123;&#125; 的形式，</span></span><br><span class="line"><span class="comment">// 以及更加现代的 for (.. in ..) &#123;&#125; 的形式, 或者</span></span><br><span class="line"><span class="comment">// 以 forEach 开头并具有许多特性支持的函数回调的形式。</span></span><br><span class="line"><span class="keyword">var</span> example9A = <span class="keyword">const</span> [<span class="string">"a"</span>, <span class="string">"b"</span>];</span><br><span class="line">example9() &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; example9A.length; i++) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example9 for loop '<span class="subst">$&#123;example9A[i]&#125;</span>'"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (i &lt; example9A.length) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example9 while loop '<span class="subst">$&#123;example9A[i]&#125;</span>'"</span>);</span><br><span class="line">    i++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> e <span class="keyword">in</span> example9A) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example9 for-in loop '<span class="subst">$&#123;e&#125;</span>'"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  example9A.forEach((e) =&gt; <span class="built_in">print</span>(<span class="string">"Example9 forEach loop '<span class="subst">$&#123;e&#125;</span>'"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历字符串中的每个字符或者提取其子串。</span></span><br><span class="line"><span class="keyword">var</span> example10S = <span class="string">"ab"</span>;</span><br><span class="line">example10() &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; example10S.length; i++) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example10 String character loop '<span class="subst">$&#123;example10S[i]&#125;</span>'"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; example10S.length; i++) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example10 substring loop '<span class="subst">$&#123;example10S.substring(i, i + <span class="number">1</span>)&#125;</span>'"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 支持两种数字格式 int 和 double 。</span></span><br><span class="line">example11() &#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">1</span> + <span class="number">320</span>, d = <span class="number">3.2</span> + <span class="number">0.01</span>;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example11 int <span class="subst">$&#123;i&#125;</span>"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example11 double <span class="subst">$&#123;d&#125;</span>"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DateTime 提供了日期/时间的算法。</span></span><br><span class="line">example12() &#123;</span><br><span class="line">  <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">DateTime</span>.now();</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example12 now '<span class="subst">$&#123;now&#125;</span>'"</span>);</span><br><span class="line">  now = now.add(<span class="keyword">new</span> <span class="built_in">Duration</span>(days: <span class="number">1</span>));</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example12 tomorrow '<span class="subst">$&#123;now&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 支持正则表达式。</span></span><br><span class="line">example13() &#123;</span><br><span class="line">  <span class="keyword">var</span> s1 = <span class="string">"some string"</span>, s2 = <span class="string">"some"</span>, re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"^s.+?g\$"</span>);</span><br><span class="line">  match(s) &#123;</span><br><span class="line">    <span class="keyword">if</span> (re.hasMatch(s)) &#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"Example13 regexp matches '<span class="subst">$&#123;s&#125;</span>'"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"Example13 regexp doesn't match '<span class="subst">$&#123;s&#125;</span>'"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  match(s1);</span><br><span class="line">  match(s2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 布尔表达式必需被解析为 true 或 false，</span></span><br><span class="line"><span class="comment">// 因为不支持隐式转换。</span></span><br><span class="line">example14() &#123;</span><br><span class="line">  <span class="keyword">var</span> v = <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">if</span> (v) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example14 value is true"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  v = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (v) &#123;</span><br><span class="line">      <span class="comment">// 不会执行</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 不会执行</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example14 null value causes an exception: '<span class="subst">$&#123;e&#125;</span>'"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// try/catch/finally 和 throw 语句用于异常处理。</span></span><br><span class="line"><span class="comment">// throw 语句可以使用任何对象作为参数。</span></span><br><span class="line">example15() &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="string">"Some unexpected error."</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"Example15 an exception: '<span class="subst">$&#123;e&#125;</span>'"</span>);</span><br><span class="line">      <span class="keyword">throw</span> e; <span class="comment">// Re-throw</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example15 catch exception being re-thrown: '<span class="subst">$&#123;e&#125;</span>'"</span>);</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example15 Still run finally"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 要想有效地动态创建长字符串，</span></span><br><span class="line"><span class="comment">// 应该使用 StringBuffer。 或者 join 一个字符串的数组。</span></span><br><span class="line">example16() &#123;</span><br><span class="line">  <span class="keyword">var</span> sb = <span class="keyword">new</span> <span class="built_in">StringBuffer</span>(), a = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>], e;</span><br><span class="line">  <span class="keyword">for</span> (e <span class="keyword">in</span> a) &#123; sb.write(e); &#125;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example16 dynamic string created with "</span></span><br><span class="line">    <span class="string">"StringBuffer '<span class="subst">$&#123;sb.toString()&#125;</span>'"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example16 join string array '<span class="subst">$&#123;a.join()&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串连接只需让相邻的字符串字面量挨着，</span></span><br><span class="line"><span class="comment">// 不需要额外的操作符。</span></span><br><span class="line">example17() &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example17 "</span></span><br><span class="line">      <span class="string">"concatenate "</span></span><br><span class="line">      <span class="string">"strings "</span></span><br><span class="line">      <span class="string">"just like that"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串使用单引号或双引号做分隔符，二者并没有实际的差异。</span></span><br><span class="line"><span class="comment">// 这种灵活性可以很好地避免内容中需要转义分隔符的情况。</span></span><br><span class="line"><span class="comment">// 例如，字符串内容里的 HTML 属性使用了双引号。</span></span><br><span class="line">example18() &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">'Example18 &lt;a href="etc"&gt;'</span></span><br><span class="line">      <span class="string">"Don't can't I'm Etc"</span></span><br><span class="line">      <span class="string">'&lt;/a&gt;'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用三个单引号或三个双引号表示的字符串</span></span><br><span class="line"><span class="comment">// 可以跨越多行，并且包含行分隔符。</span></span><br><span class="line">example19() &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">'''Example19 &lt;a href="etc"&gt; </span></span><br><span class="line"><span class="string">Example19 Don't can't I'm Etc</span></span><br><span class="line"><span class="string">Example19 &lt;/a&gt;'''</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串可以使用 $ 字符插入内容。</span></span><br><span class="line"><span class="comment">// 使用 $ &#123; [expression] &#125; 的形式，表达式的值会被插入到字符串中。</span></span><br><span class="line"><span class="comment">// $ 跟着一个变量名会插入变量的值。</span></span><br><span class="line"><span class="comment">// 如果要在字符串中插入 $ ，可以使用 \$ 的转义形式代替。</span></span><br><span class="line">example20() &#123;</span><br><span class="line">  <span class="keyword">var</span> s1 = <span class="string">"'\$&#123;s&#125;'"</span>, s2 = <span class="string">"'\$s'"</span>;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example20 \$ interpolation <span class="subst">$&#123;s1&#125;</span> or $s2 works."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可选类型允许作为 API 的标注，并且可以辅助 IDE，</span></span><br><span class="line"><span class="comment">// 这样 IDE 可以更好地提供重构、自动完成和错误检测功能。</span></span><br><span class="line"><span class="comment">// 目前为止我们还没有声明任何类型，并且程序运行地很好。</span></span><br><span class="line"><span class="comment">// 事实上，类型在运行时会被忽略。</span></span><br><span class="line"><span class="comment">// 类型甚至可以是错的，并且程序依然可以执行，</span></span><br><span class="line"><span class="comment">// 好像和类型完全无关一样。</span></span><br><span class="line"><span class="comment">// 有一个运行时参数可以让程序进入检查模式，它会在运行时检查类型错误。</span></span><br><span class="line"><span class="comment">// 这在开发时很有用，但是由于增加了额外的检查会使程序变慢，</span></span><br><span class="line"><span class="comment">// 因此应该避免在部署时使用。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example21</span> </span>&#123;</span><br><span class="line">  <span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; _names;</span><br><span class="line">  Example21() &#123;</span><br><span class="line">    _names = [<span class="string">"a"</span>, <span class="string">"b"</span>]; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; <span class="keyword">get</span> names =&gt; _names;</span><br><span class="line">  <span class="keyword">set</span> names(<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; list) &#123;</span><br><span class="line">    _names = list;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">int</span> <span class="keyword">get</span> length =&gt; _names.length;</span><br><span class="line">  <span class="keyword">void</span> add(<span class="built_in">String</span> name) &#123;</span><br><span class="line">    _names.add(name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> example21() &#123;</span><br><span class="line">  Example21 o = <span class="keyword">new</span> Example21();</span><br><span class="line">  o.add(<span class="string">"c"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example21 names '<span class="subst">$&#123;o.names&#125;</span>' and length '<span class="subst">$&#123;o.length&#125;</span>'"</span>);</span><br><span class="line">  o.names = [<span class="string">"d"</span>, <span class="string">"e"</span>];</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example21 names '<span class="subst">$&#123;o.names&#125;</span>' and length '<span class="subst">$&#123;o.length&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类的继承形式是 class name extends AnotherClassName &#123;&#125; 。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example22A</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _name = <span class="string">"Some Name!"</span>;</span><br><span class="line">  <span class="keyword">get</span> name =&gt; _name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example22B</span> <span class="keyword">extends</span> <span class="title">Example22A</span> </span>&#123;&#125;</span><br><span class="line">example22() &#123;</span><br><span class="line">  <span class="keyword">var</span> o = <span class="keyword">new</span> Example22B();</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example22 class inheritance '<span class="subst">$&#123;o.name&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类也可以使用 mixin 的形式 ：</span></span><br><span class="line"><span class="comment">// class name extends SomeClass with AnotherClassName &#123;&#125;.</span></span><br><span class="line"><span class="comment">// 必需继承某个类才能 mixin 另一个类。</span></span><br><span class="line"><span class="comment">// 当前 mixin 的模板类不能有构造函数。</span></span><br><span class="line"><span class="comment">// Mixin 主要是用来和辅助的类共享方法的，</span></span><br><span class="line"><span class="comment">// 这样单一继承就不会影响代码复用。</span></span><br><span class="line"><span class="comment">// Mixin 声明在类定义的 "with" 关键词后面。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example23A</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example23Utils</span> </span>&#123;</span><br><span class="line">  addTwo(n1, n2) &#123;</span><br><span class="line">    <span class="keyword">return</span> n1 + n2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example23B</span> <span class="keyword">extends</span> <span class="title">Example23A</span> <span class="title">with</span> <span class="title">Example23Utils</span> </span>&#123;</span><br><span class="line">  addThree(n1, n2, n3) &#123;</span><br><span class="line">    <span class="keyword">return</span> addTwo(n1, n2) + n3;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">example23() &#123;</span><br><span class="line">  <span class="keyword">var</span> o = <span class="keyword">new</span> Example23B(), r1 = o.addThree(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>),</span><br><span class="line">    r2 = o.addTwo(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example23 addThree(1, 2, 3) results in '<span class="subst">$&#123;r1&#125;</span>'"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example23 addTwo(1, 2) results in '<span class="subst">$&#123;r2&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类的构造函数名和类名相同，形式为</span></span><br><span class="line"><span class="comment">// SomeClass() : super() &#123;&#125;,  其中 ": super()" 的部分是可选的，</span></span><br><span class="line"><span class="comment">// 它用来传递参数给父类的构造函数。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example24A</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _value;</span><br><span class="line">  Example24A(&#123;value: <span class="string">"someValue"</span>&#125;) &#123;</span><br><span class="line">    _value = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> value =&gt; _value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example24B</span> <span class="keyword">extends</span> <span class="title">Example24A</span> </span>&#123;</span><br><span class="line">  Example24B(&#123;value: <span class="string">"someOtherValue"</span>&#125;) : <span class="keyword">super</span>(value: value);</span><br><span class="line">&#125;</span><br><span class="line">example24() &#123;</span><br><span class="line">  <span class="keyword">var</span> o1 = <span class="keyword">new</span> Example24B(),</span><br><span class="line">    o2 = <span class="keyword">new</span> Example24B(value: <span class="string">"evenMore"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example24 calling super during constructor '<span class="subst">$&#123;o1.value&#125;</span>'"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example24 calling super during constructor '<span class="subst">$&#123;o2.value&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对于简单的类，有一种设置构造函数参数的快捷方式。</span></span><br><span class="line"><span class="comment">// 只需要使用 this.parameterName 的前缀，</span></span><br><span class="line"><span class="comment">// 它就会把参数设置为同名的实例变量。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example25</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> value, anotherValue;</span><br><span class="line">  Example25(&#123;<span class="keyword">this</span>.value, <span class="keyword">this</span>.anotherValue&#125;);</span><br><span class="line">&#125;</span><br><span class="line">example25() &#123;</span><br><span class="line">  <span class="keyword">var</span> o = <span class="keyword">new</span> Example25(value: <span class="string">"a"</span>, anotherValue: <span class="string">"b"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example25 shortcut for constructor '<span class="subst">$&#123;o.value&#125;</span>' and "</span></span><br><span class="line">    <span class="string">"'<span class="subst">$&#123;o.anotherValue&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以在大括号 &#123;&#125; 中声明命名参数。</span></span><br><span class="line"><span class="comment">// 大括号 &#123;&#125; 中声明的参数的顺序是随意的。</span></span><br><span class="line"><span class="comment">// 在中括号 [] 中声明的参数也是可选的。 </span></span><br><span class="line">example26() &#123;</span><br><span class="line">  <span class="keyword">var</span> _name, _surname, _email;</span><br><span class="line">  setConfig1(&#123;name, surname&#125;) &#123;</span><br><span class="line">    _name = name;</span><br><span class="line">    _surname = surname;</span><br><span class="line">  &#125;</span><br><span class="line">  setConfig2(name, [surname, email]) &#123;</span><br><span class="line">    _name = name;</span><br><span class="line">    _surname = surname;</span><br><span class="line">    _email = email;</span><br><span class="line">  &#125;</span><br><span class="line">  setConfig1(surname: <span class="string">"Doe"</span>, name: <span class="string">"John"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example26 name '<span class="subst">$&#123;_name&#125;</span>', surname '<span class="subst">$&#123;_surname&#125;</span>', "</span></span><br><span class="line">    <span class="string">"email '<span class="subst">$&#123;_email&#125;</span>'"</span>);</span><br><span class="line">  setConfig2(<span class="string">"Mary"</span>, <span class="string">"Jane"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example26 name '<span class="subst">$&#123;_name&#125;</span>', surname '<span class="subst">$&#123;_surname&#125;</span>', "</span></span><br><span class="line">  <span class="string">"email '<span class="subst">$&#123;_email&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 final 声明的变量只能被设置一次。</span></span><br><span class="line"><span class="comment">// 在类里面，final 实例变量可以通过常量的构造函数参数设置。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example27</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> color1, color2;</span><br><span class="line">  <span class="comment">// 更灵活一点的方法是在冒号 : 后面设置 final 实例变量。</span></span><br><span class="line">  Example27(&#123;<span class="keyword">this</span>.color1, color2&#125;) : color2 = color2;</span><br><span class="line">&#125;</span><br><span class="line">example27() &#123;</span><br><span class="line">  <span class="keyword">final</span> color = <span class="string">"orange"</span>, o = <span class="keyword">new</span> Example27(color1: <span class="string">"lilac"</span>, color2: <span class="string">"white"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example27 color is '<span class="subst">$&#123;color&#125;</span>'"</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example27 color is '<span class="subst">$&#123;o.color1&#125;</span>' and '<span class="subst">$&#123;o.color2&#125;</span>'"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 要导入一个库，使用 import "libraryPath" 的形式，或者如果要导入的是</span></span><br><span class="line"><span class="comment">// 核心库使用 import "dart:libraryName" 。还有一个称为 "pub" 的包管理工具，</span></span><br><span class="line"><span class="comment">// 它使用 import "package:packageName" 的约定形式。</span></span><br><span class="line"><span class="comment">// 看下这个文件顶部的 import "dart:collection"; 语句。 </span></span><br><span class="line"><span class="comment">// 导入语句必需在其它代码声明之前出现。IterableBase 来自于 dart:collection 。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example28</span> <span class="keyword">extends</span> <span class="title">IterableBase</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> names;</span><br><span class="line">  Example28() &#123;</span><br><span class="line">    names = [<span class="string">"a"</span>, <span class="string">"b"</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> iterator =&gt; names.iterator;</span><br><span class="line">&#125;</span><br><span class="line">example28() &#123;</span><br><span class="line">  <span class="keyword">var</span> o = <span class="keyword">new</span> Example28();</span><br><span class="line">  o.forEach((name) =&gt; <span class="built_in">print</span>(<span class="string">"Example28 '<span class="subst">$&#123;name&#125;</span>'"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对于控制流语句，我们有：</span></span><br><span class="line"><span class="comment">// * 必需带 break 的标准 switch 语句</span></span><br><span class="line"><span class="comment">// * if-else 和三元操作符 ..?..:.. </span></span><br><span class="line"><span class="comment">// * 闭包和匿名函数</span></span><br><span class="line"><span class="comment">// * break, continue 和 return 语句</span></span><br><span class="line">example29() &#123;</span><br><span class="line">  <span class="keyword">var</span> v = <span class="keyword">true</span> ? <span class="number">30</span> : <span class="number">60</span>;</span><br><span class="line">  <span class="keyword">switch</span> (v) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">30</span>:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"Example29 switch statement"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (v &lt; <span class="number">30</span>) &#123;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (v &gt; <span class="number">30</span>) &#123;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example29 if-else statement"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  callItForMe(fn()) &#123;</span><br><span class="line">    <span class="keyword">return</span> fn();</span><br><span class="line">  &#125;</span><br><span class="line">  rand() &#123;</span><br><span class="line">    v = <span class="keyword">new</span> DM.Random().nextInt(<span class="number">50</span>);</span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Example29 callItForMe(rand) '<span class="subst">$&#123;callItForMe(rand)&#125;</span>'"</span>);</span><br><span class="line">    <span class="keyword">if</span> (v != <span class="number">30</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 不会到这里。</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解析 int，把 double 转成 int，或者使用 ~/ 操作符在除法计算时仅保留整数位。</span></span><br><span class="line"><span class="comment">// 让我们也来场猜数游戏吧。</span></span><br><span class="line">example30() &#123;</span><br><span class="line">  <span class="keyword">var</span> gn, tooHigh = <span class="keyword">false</span>,</span><br><span class="line">    n, n2 = (<span class="number">2.0</span>).toInt(), top = <span class="built_in">int</span>.parse(<span class="string">"123"</span>) ~/ n2, bottom = <span class="number">0</span>;</span><br><span class="line">  top = top ~/ <span class="number">6</span>;</span><br><span class="line">  gn = <span class="keyword">new</span> DM.Random().nextInt(top + <span class="number">1</span>); <span class="comment">// +1 because nextInt top is exclusive</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Example30 Guess a number between 0 and <span class="subst">$&#123;top&#125;</span>"</span>);</span><br><span class="line">  guessNumber(i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n == gn) &#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"Example30 Guessed right! The number is <span class="subst">$&#123;gn&#125;</span>"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      tooHigh = n &gt; gn;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"Example30 Number <span class="subst">$&#123;n&#125;</span> is too "</span></span><br><span class="line">        <span class="string">"<span class="subst">$&#123;tooHigh ? <span class="string">'high'</span> : <span class="string">'low'</span>&#125;</span>. Try again"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n == gn;</span><br><span class="line">  &#125;</span><br><span class="line">  n = (top - bottom) ~/ <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">while</span> (!guessNumber(n)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (tooHigh) &#123;</span><br><span class="line">      top = n - <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      bottom = n + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    n = bottom + ((top - bottom) ~/ <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序的唯一入口点是 main 函数。</span></span><br><span class="line"><span class="comment">// 在程序开始执行 main 函数之前，不期望执行任何外层代码。</span></span><br><span class="line"><span class="comment">// 这样可以帮助程序更快地加载，甚至仅惰性加载程序启动时需要的部分。</span></span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"Learn Dart in 15 minutes!"</span>);</span><br><span class="line">  [example1, example2, example3, example4, example5, example6, example7,</span><br><span class="line">    example8, example9, example10, example11, example12, example13, example14,</span><br><span class="line">    example15, example16, example17, example18, example19, example20,</span><br><span class="line">    example21, example22, example23, example24, example25, example26,</span><br><span class="line">    example27, example28, example29, example30</span><br><span class="line">    ].forEach((ef) =&gt; ef());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Dart/">Dart</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/01/18/Android Builder机制/">
+        <span class="next-text nav-default">Android Builder机制</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+
+  </body>
+</html>

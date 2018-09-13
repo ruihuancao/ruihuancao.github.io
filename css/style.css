@@ -383,7 +383,7 @@ body {
   body.hide-top {
     border-top: 3px solid transparent; }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   body {
     border-top: 0; } }
 
@@ -427,9 +427,9 @@ h6 {
 
 .container {
   margin: 0 auto;
-  width: 800px; }
+  width: 1000px; }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .container {
     width: 100%;
     box-shadow: -1px -5px 5px #cacaca; } }
@@ -463,7 +463,7 @@ h6 {
     .header .logo-wrapper .logo {
       font-size: 48px;
       font-family: "Chancery", cursive, LiSu, sans-serif; }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     .header .logo-wrapper {
       display: none; } }
   .header .site-navbar {
@@ -502,11 +502,11 @@ h6 {
           left: 0; }
       .header .site-navbar .menu .menu-item-link {
         font-size: 18px; }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     .header .site-navbar {
       display: none; } }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .header {
     padding: 50px 0 0;
     text-align: center; } }
@@ -574,7 +574,7 @@ h6 {
   .post .post-toc {
     position: absolute;
     width: 200px;
-    margin-left: 785px;
+    margin-left: 985px;
     padding: 10px;
     font-family: Athelas, STHeiti, Microsoft Yahei, serif;
     border-radius: 5px;
@@ -599,7 +599,7 @@ h6 {
           padding-left: 15px; }
       .post .post-toc .post-toc-content .toc-link.active {
         color: #0047AB; }
-  @media screen and (max-width: 1185px) {
+  @media screen and (max-width: 1385px) {
     .post .post-toc {
       display: none; } }
   .post .post-content h1 {
@@ -976,7 +976,7 @@ h6 {
           transform: translateX(4px); }
       .post .post-footer .post-nav .nav-mobile {
         display: none; }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     .post .post-footer .post-nav .nav-default {
       display: none; }
     .post .post-footer .post-nav .nav-mobile {
@@ -1073,7 +1073,7 @@ h6 {
       .archive .archive-post:hover .archive-post-title .archive-post-link {
         color: #003278; }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .archive {
     margin-left: auto;
     margin-right: auto; }
@@ -1379,7 +1379,7 @@ h6 {
       .mobile-menu .mobile-menu-list a:hover {
         color: #0047AB; }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .mobile-navbar {
     display: block; } }
 
@@ -1395,7 +1395,7 @@ h6 {
   .back-to-top:hover {
     transform: translateY(-5px); }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .back-to-top {
     display: none !important; } }
 
