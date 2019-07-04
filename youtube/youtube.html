@@ -19,8 +19,8 @@
 </head>
 
 <body>
-    <div id='player'></div>
-    <script>
+<div id='player'></div>
+<script>
         var player;
         var timerId;
         function onYouTubeIframeAPIReady() {
@@ -47,9 +47,9 @@
         }
 
         function onPlayerReady(event) {
-            var videoId = "8iZpH7O6zXo";
-            var showinfo = 0;
-            var autoPlay = 0;
+            var videoId = getParams("videoId");
+            var showinfo = getParams("showInfo");
+            var autoPlay = getParams("autoPlay");
             if (showinfo != 0) {
                 hideAnnotations();
             }
@@ -58,7 +58,6 @@
             } else {
                 cueById(videoId, 0);
             }
-            Toast.postMessage("JS调用了Flutter");
         }
 
         function hideAnnotations() {
@@ -106,6 +105,9 @@
         function seekTo(position, seekAhead) {
             player.seekTo(position, seekAhead);
             return '';
+        }
+        function getParams(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
         }
     </script>
 
